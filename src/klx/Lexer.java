@@ -1,22 +1,18 @@
-package kl;
+package klx;
 
 import java.io.IOException;
 
 public class Lexer {
     public Lexer(String fileName) throws IOException {
-        __fileName = fileName;
+        this.fileName = fileName;
         __ctor();
-    }
-
-    public String fileName() {
-        return __fileName;
     }
 
     public Token nextToken() {
         if (__pos < __length()) {
             if (__pos == __length()) {
                 __accept();
-                return new Token(Token.Type.eEof, fileName(), __lnum, __col, "<EOF>");
+                return new Token(Token.Type.eEof, fileName, __lnum, __col, "<EOF>");
             }
             char ch = __la();
             __sbuf = new StringBuilder();
@@ -69,18 +65,18 @@ public class Lexer {
     }
 
     private void __ctor() throws IOException {
-        __cbuf = Util.readFile(fileName()).toCharArray();
+        __cbuf = Util.readFile(fileName).toCharArray();
         __pos = 0;
         __lnum = 0;
         __col = 0;
     }
 
-    private String __fileName;
+    public String fileName;
     private char[] __cbuf;
     private int __pos, __lnum, __col;
     private StringBuilder __sbuf;
 
     static {
-        assert '0' < '9';
+        assert '0' < '9' && 'a' < 'z' && 'A' < 'Z';
     }
 }

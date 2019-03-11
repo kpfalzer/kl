@@ -1,8 +1,9 @@
-package kl;
+package klx;
 
 public class Token {
     public static enum Type {
         eEof,
+        eNewLine,
         eLineComment,
         eBlockComment,
         eDoubleQuotedString,
@@ -13,16 +14,16 @@ public class Token {
     }
 
     public Token(Type type, String fileName, long lineNumber, long col, String text) {
-        __type = type;
-        __col = col;
-        __lineNumber = lineNumber;
-        __text = text;
-        __fileName = fileName;
+        this.type = type;
+        this.col = col;
+        this.lineNumber = lineNumber;
+        this.text = text;
+        this.fileName = fileName;
 
     }
 
-    private final Type __type;
-    private final String __fileName;
-    private final long __lineNumber, __col;
-    private final String __text;
+    public final Type type;
+    public final String fileName;
+    public final long lineNumber, col;
+    public final String text;
 }
