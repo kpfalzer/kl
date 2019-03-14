@@ -19,7 +19,6 @@ public class Token {
         this.lineNumber = lineNumber;
         this.text = text;
         this.fileName = fileName;
-
     }
 
     public final Type type;
