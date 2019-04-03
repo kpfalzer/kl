@@ -20,7 +20,6 @@ public class Lexer {
             tok = __lexer.nextToken();
             if (tok.type == Token.Type.eEof)
                 break;
-
         }
         return rval;
     }
@@ -34,5 +33,5 @@ public class Lexer {
 
     private static final String __TEXT =
             "-12 +34.345\n"
-                    + "123 456";
+                    + "123 456 -12e09";
 }

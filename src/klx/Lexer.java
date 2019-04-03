@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
+import static klx.Util.Pair;
 
 public class Lexer {
     public Lexer(Path file) throws IOException {
@@ -31,10 +32,12 @@ public class Lexer {
                 ++__pos;
                 return new Token(Token.Type.eEof, fileName, __lnum, __col, "<EOF>");
             }
-            Token tok = __int();
-            if (nonNull(tok)) return tok;
-            tok = __float();
-            if (nonNull(tok)) return tok;
+            __resetMatcher = true;
+            Token tok = null;
+            for (__PattType pt : __PATTERNS) {
+                tok = __tryMatch(pt.v1, pt.v2);
+                if (nonNull(tok)) return tok;
+            }
             assert false;
         }
         // Already returned EOF
@@ -42,12 +45,9 @@ public class Lexer {
     }
 
     private Token __tryMatch(Pattern patt, Token.Type type) {
-        return __tryMatch(patt, type, false);
-    }
-
-    private Token __tryMatch(Pattern patt, Token.Type type, boolean reset) {
-        if (reset || isNull(__matcher)) {
+        if (__resetMatcher || isNull(__matcher)) {
             __matcher = patt.matcher(__cbuf).region(__pos, __length());
+            __resetMatcher = false;
         } else {
             __matcher.usePattern(patt);
         }
@@ -62,14 +62,6 @@ public class Lexer {
             return tok;
         }
         return null;
-    }
-
-    private Token __int() {
-        return __tryMatch(__INT, Token.Type.eInt);
-    }
-
-    private Token __float() {
-        return __tryMatch(__FLOAT, Token.Type.eFloat);
     }
 
     private char __la() {
@@ -94,12 +86,29 @@ public class Lexer {
     private int __pos, __lnum, __col;
     private StringBuilder __sbuf;
     private Matcher __matcher;
+    private boolean __resetMatcher = true;
 
-    private static final String __TAIL = "(?=(\\p{Punct}|\\s))";
+    private static final String __TAIL = "(?=(\\p{Punct}|\\s|$))";
 
     private static final Pattern __INT =
-            Pattern.compile("(\\+\\-)?(\\d([_\\d])*)" + __TAIL);
+            Pattern.compile("(\\+|\\-)?(\\d([_\\d])*)" + __TAIL);
     private static final Pattern __FLOAT =
-            Pattern.compile("(\\+\\-)?(\\d([_\\d])*)(\\.(e|E)?(\\+|\\-)?(\\d([_\\d])*))" + __TAIL);
+            Pattern.compile("(\\+|\\-)?(\\d([_\\d])*)((e|E)|(\\.(e|E)?))(\\+|\\-)?\\d([_\\d])*" + __TAIL);
+    private static final Pattern __WHITE_SPACE =
+            Pattern.compile("\\s+");
+
+    private static class __PattType extends Pair<Pattern, Token.Type> {
+        public __PattType(Pattern patt, Token.Type type) {
+            super(patt, type);
+        }
+    }
+
+    private static __PattType[] __PATTERNS = {
+            //order: longest first
+            new __PattType(__FLOAT, Token.Type.eFloat),
+            new __PattType(__INT, Token.Type.eInt),
+            new __PattType(__WHITE_SPACE, Token.Type.eWhiteSpace),
+
+    };
 
 }

@@ -11,6 +11,7 @@ public class Token {
         eIdent,
         eInt,
         eFloat,
+        eWhiteSpace,
     }
 
     public Token(Type type, String fileName, long lineNumber, long col, String text) {
