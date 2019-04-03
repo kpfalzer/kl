@@ -1,18 +1,28 @@
 package klx;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 public class Lexer {
-    public Lexer(String fileName) throws IOException {
+    public Lexer(Path file) throws IOException {
+        this(Util.readFile(file), file.toString());
+    }
+
+    private Lexer(String text, String fileName) throws IOException {
         this.fileName = fileName;
-        __cbuf = Util.readFile(fileName);
+        __cbuf = text;
         __pos = 0;
         __lnum = 0;
         __col = 0;
+    }
+
+    public Lexer(String text) throws IOException {
+        this(text, "<none>");
     }
 
     public Token nextToken() {
@@ -21,9 +31,11 @@ public class Lexer {
                 ++__pos;
                 return new Token(Token.Type.eEof, fileName, __lnum, __col, "<EOF>");
             }
-            char ch = __la();
-            __sbuf = new StringBuilder();
-            //todo
+            Token tok = __int();
+            if (nonNull(tok)) return tok;
+            tok = __float();
+            if (nonNull(tok)) return tok;
+            assert false;
         }
         // Already returned EOF
         return null;
@@ -52,8 +64,12 @@ public class Lexer {
         return null;
     }
 
-    private Token __number() {
-        return null; //todo
+    private Token __int() {
+        return __tryMatch(__INT, Token.Type.eInt);
+    }
+
+    private Token __float() {
+        return __tryMatch(__FLOAT, Token.Type.eFloat);
     }
 
     private char __la() {
@@ -73,13 +89,17 @@ public class Lexer {
         return __cbuf.length();
     }
 
-    public String fileName;
+    public final String fileName;
     private final String __cbuf;
     private int __pos, __lnum, __col;
     private StringBuilder __sbuf;
     private Matcher __matcher;
 
-    private static final Pattern __NUMBER =
-            Pattern.compile("(\\+\\-)?(\\d([_\\d])*)(\\.?(e|E)?(\\+|\\-)?(\\d([_\\d])*))?");
+    private static final String __TAIL = "(?=(\\p{Punct}|\\s))";
+
+    private static final Pattern __INT =
+            Pattern.compile("(\\+\\-)?(\\d([_\\d])*)" + __TAIL);
+    private static final Pattern __FLOAT =
+            Pattern.compile("(\\+\\-)?(\\d([_\\d])*)(\\.(e|E)?(\\+|\\-)?(\\d([_\\d])*))" + __TAIL);
 
 }
