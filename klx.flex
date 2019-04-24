@@ -4,6 +4,8 @@ package klx.parser;
 
 %public
 %class Scanner
+%function __yylex
+%implements Parser.Lexer
 %type Token
 %line
 %column

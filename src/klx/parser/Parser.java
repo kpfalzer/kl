@@ -44,7 +44,7 @@ package klx.parser ;
  *
  * @author LALR (1) parser skeleton written by Paolo Bonzini.
  */
-class YYParser
+class Parser
 {
     /** Version number for the Bison executable that generated this parser.  */
   public static final String bisonVersion = "3.3";
@@ -60,15 +60,12 @@ class YYParser
 
   /**
    * Communication interface between the scanner and the Bison-generated
-   * parser <tt>YYParser</tt>.
+   * parser <tt>Parser</tt>.
    */
   public interface Lexer {
     /** Token returned by the scanner to signal the end of its input.  */
     public static final int EOF = 0;
 
-/* Tokens.  */
-    /** Token number,to be returned by the scanner.  */
-    static final int Token = 258;
 
 
     
@@ -77,7 +74,7 @@ class YYParser
      * Method to retrieve the semantic value of the last scanned token.
      * @return the semantic value of the last scanned token.
      */
-    Object getLVal ();
+    Token getLVal ();
 
     /**
      * Entry point for the scanner.  Returns the token identifier corresponding
@@ -110,7 +107,7 @@ class YYParser
    * Instantiates the Bison-generated parser.
    * @param yylexer The scanner that will supply tokens to the parser.
    */
-  public YYParser (Lexer yylexer) 
+  public Parser (Lexer yylexer) 
   {
     
     this.yylexer = yylexer;
@@ -165,12 +162,12 @@ class YYParser
   private final class YYStack {
     private int[] stateStack = new int[16];
     
-    private Object[] valueStack = new Object[16];
+    private Token[] valueStack = new Token[16];
 
     public int size = 16;
     public int height = -1;
 
-    public final void push (int state, Object value                            ) {
+    public final void push (int state, Token value                            ) {
       height++;
       if (size == height)
         {
@@ -179,7 +176,7 @@ class YYParser
           stateStack = newStateStack;
           
 
-          Object[] newValueStack = new Object[size * 2];
+          Token[] newValueStack = new Token[size * 2];
           System.arraycopy (valueStack, 0, newValueStack, 0, height);
           valueStack = newValueStack;
 
@@ -208,7 +205,7 @@ class YYParser
       return stateStack[height - i];
     }
 
-    public final Object valueAt (int i) {
+    public final Token valueAt (int i) {
       return valueStack[height - i];
     }
 
@@ -285,7 +282,7 @@ class YYParser
 
   private int yyaction (int yyn, YYStack yystack, int yylen) 
   {
-    Object yyval;
+    Token yyval;
     
 
     /* If YYLEN is nonzero, implement the default value of the action:
@@ -304,7 +301,7 @@ class YYParser
     switch (yyn)
       {
         
-/* "src/klx/parser/Parser.java":308  */ /* lalr1.java:480  */
+/* "src/klx/parser/Parser.java":305  */ /* lalr1.java:480  */
         default: break;
       }
 
@@ -326,7 +323,7 @@ class YYParser
   `--------------------------------*/
 
   private void yy_symbol_print (String s, int yytype,
-                                 Object yyvaluep                                 )
+                                 Token yyvaluep                                 )
   {
     if (yydebug > 0)
     yycdebug (s + (yytype < yyntokens_ ? " token " : " nterm ")
@@ -364,7 +361,7 @@ class YYParser
     
 
     /* Semantic value of the lookahead.  */
-    Object yylval = null;
+    Token yylval = null;
 
     yycdebug ("Starting parse\n");
     yyerrstatus_ = 0;
@@ -665,7 +662,7 @@ class YYParser
   {
     return new byte[]
     {
-       2,     0,     0,     0,     3
+       2,     0,     0,     3
     };
   }
 
@@ -674,7 +671,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,    -1,    -1,    -1,     4
+       0,    -1,    -1,     3
     };
   }
 
@@ -685,7 +682,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,     6,     0,     4,     7
+       0,     5,     0,     3,     6
     };
   }
 
@@ -695,7 +692,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,     5,     6,     6,     7
+       0,     4,     5,     5,     6
     };
   }
 
@@ -716,7 +713,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new short[]
     {
-       0,   256,   257,   258,    97
+       0,   256,   257,    97
     };
   }
 
@@ -727,8 +724,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new String[]
     {
-  "$end", "error", "$undefined", "Token", "'a'", "$accept", "input",
-  "line", null
+  "$end", "error", "$undefined", "'a'", "$accept", "input", "line", null
     };
   }
 
@@ -738,7 +734,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,     9,     9,    10,    14
+       0,    10,    10,    11,    15
     };
   }
 
@@ -778,7 +774,7 @@ private static final byte yycheck_[] = yycheck_init();
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     4,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     3,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -794,7 +790,7 @@ private static final byte yycheck_[] = yycheck_init();
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     1,     2,     3
+       2,     2,     2,     2,     2,     2,     1,     2
     };
   }
 
@@ -806,22 +802,22 @@ private static final byte yycheck_[] = yycheck_init();
       return yyundef_token_;
   }
 
-  private static final int yylast_ = 4;
+  private static final int yylast_ = 3;
   private static final int yynnts_ = 3;
   private static final int yyempty_ = -2;
   private static final int yyfinal_ = 2;
   private static final int yyterror_ = 1;
   private static final int yyerrcode_ = 256;
-  private static final int yyntokens_ = 5;
+  private static final int yyntokens_ = 4;
 
-  private static final int yyuser_token_number_max_ = 258;
+  private static final int yyuser_token_number_max_ = 257;
   private static final int yyundef_token_ = 2;
 
 /* User implementation code.  */
 
 }
 
-/* "klx.bison":16  */ /* lalr1.java:1060  */
+/* "klx.bison":17  */ /* lalr1.java:1060  */
 
 
 //epilogue

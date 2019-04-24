@@ -2,7 +2,8 @@
 package klx.parser ;
 %}
 
-%token Token
+%define api.parser.class {Parser}
+%define api.value.type {Token}
 
 %%
 input:

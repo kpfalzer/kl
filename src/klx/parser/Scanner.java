@@ -8,7 +8,7 @@ package klx.parser;
  * <a href="http://www.jflex.de/">JFlex</a> 1.7.0
  * from the specification file <tt>klx.flex</tt>
  */
-public class Scanner {
+public class Scanner implements Parser.Lexer {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
@@ -460,7 +460,7 @@ public class Scanner {
    * @return      the next token
    * @exception   java.io.IOException  if any I/O-Error occurs
    */
-  public Token yylex() throws java.io.IOException {
+  public Token __yylex() throws java.io.IOException {
     int zzInput;
     int zzAction;
 
