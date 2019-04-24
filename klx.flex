@@ -4,6 +4,7 @@ package klx.parser;
 
 %public
 %class Scanner
+%type Token
 %line
 %column
 
@@ -18,12 +19,10 @@ InputCharacter = [^\r\n]
 WhiteSpace = {LineTerminator} | [ \t\f]
 
 /* comments */
-Comment = {TraditionalComment} | {EndOfLineComment} | 
-          {DocumentationComment}
+Comment = {TraditionalComment} | {EndOfLineComment}
 
-TraditionalComment = "/*" [^*] ~"*/" | "/*" "*"+ "/"
+TraditionalComment = "/*" ~"*/"
 EndOfLineComment = "//" {InputCharacter}* {LineTerminator}?
-DocumentationComment = "/*" "*"+ [^/*] ~"*/"
 
 /* identifiers */
 Identifier = [_a-zA-Z][_a-zA-Z0-9]*
