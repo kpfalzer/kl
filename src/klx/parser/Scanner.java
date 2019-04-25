@@ -255,14 +255,9 @@ public class Scanner implements Parser.Lexer {
   }
 
   @Override
-  public int yylex() {
-  try {
+  public int yylex() throws java.io.IOException {
 		__lastToken = __yylex();
 		return __lastToken.type;
-		}
-		catch (Exception e) {
-		throw new RuntimeException(e);
-		}
 	}
 
   @Override
