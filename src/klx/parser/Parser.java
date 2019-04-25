@@ -35,8 +35,9 @@
 /* "klx.bison":1  */ /* lalr1.java:90  */
 
 package klx.parser ;
+import klx.Token ;
 
-/* "src/klx/parser/Parser.java":40  */ /* lalr1.java:90  */
+/* "src/klx/parser/Parser.java":41  */ /* lalr1.java:90  */
 
 
 /**
@@ -301,7 +302,7 @@ class Parser
     switch (yyn)
       {
         
-/* "src/klx/parser/Parser.java":305  */ /* lalr1.java:480  */
+/* "src/klx/parser/Parser.java":306  */ /* lalr1.java:480  */
         default: break;
       }
 
@@ -734,7 +735,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,    10,    10,    11,    15
+       0,    11,    11,    12,    16
     };
   }
 
@@ -817,7 +818,7 @@ private static final byte yycheck_[] = yycheck_init();
 
 }
 
-/* "klx.bison":17  */ /* lalr1.java:1060  */
+/* "klx.bison":18  */ /* lalr1.java:1060  */
 
 
 //epilogue

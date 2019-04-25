@@ -1,4 +1,5 @@
 package klx.parser;
+import klx.Token;
 
 %%
 
@@ -11,7 +12,23 @@ package klx.parser;
 %column
 
 %{
-	//TODO: stuff directly into class file
+	private static Token __lastToken = null;
+
+  @Override
+  public Token getLVal() {
+    return null;
+  }
+
+  @Override
+  public int yylex() {
+		__lastToken = __yylex();
+		return __lastToken.type.code;
+	}
+
+  @Override
+  public void yyerror(String msg) {
+
+  }
 %}
 
 /* main character classes */
@@ -31,24 +48,21 @@ Identifier = [_a-zA-Z][_a-zA-Z0-9]*
 
 /* integer literals */
 DecIntegerLiteral = 0 | [1-9][0-9]*
-DecLongLiteral    = {DecIntegerLiteral} [lL]
 
-HexIntegerLiteral = 0 [xX] 0* {HexDigit} {1,8}
-HexLongLiteral    = 0 [xX] 0* {HexDigit} {1,16} [lL]
-HexDigit          = [0-9a-fA-F]
-
-OctIntegerLiteral = 0+ [1-3]? {OctDigit} {1,15}
-OctLongLiteral    = 0+ 1? {OctDigit} {1,21} [lL]
-OctDigit          = [0-7]
-    
 /* floating point literals */        
-FloatLiteral  = ({FLit1}|{FLit2}|{FLit3}) {Exponent}? [fF]
-DoubleLiteral = ({FLit1}|{FLit2}|{FLit3}) {Exponent}?
+FloatLiteral  = ({FLit1}|{FLit2}|{FLit3}) {Exponent}? 
 
 FLit1    = [0-9]+ \. [0-9]* 
 FLit2    = \. [0-9]+ 
 FLit3    = [0-9]+ 
 Exponent = [eE] [+-]? [0-9]+
+
+BinaryLiteral = {BasedWidth}? \' [bB] [01][01_]*
+OctalLiteral  = {BasedWidth}? \' [oO] [0-7][0-7_]*
+HexLiteral    = {BasedWidth}? \' [hH] {HexDigit} (_|{HexDigit})*
+DecLiteral    = {BasedWidth}? \' [dD] [0-9][0-9_]*
+HexDigit      = [0-9a-fA-F]
+BasedWidth    = [1-9][0-9]*
 
 /* string and character literals */
 StringCharacter = [^\r\n\"\\]

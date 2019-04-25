@@ -1,5 +1,6 @@
 %{
 package klx.parser ;
+import klx.Token ;
 %}
 
 %define api.parser.class {Parser}
