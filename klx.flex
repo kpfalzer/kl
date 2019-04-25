@@ -22,7 +22,7 @@ import klx.Token;
   @Override
   public int yylex() {
 		__lastToken = __yylex();
-		return __lastToken.type.code;
+		return __lastToken.type.ordinal();
 	}
 
   @Override

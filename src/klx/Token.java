@@ -2,22 +2,16 @@ package klx;
 
 public class Token {
     public static enum Type {
-        eEof(1),
-        eNewLine(2),
-        eLineComment(3),
-        eBlockComment(4),
-        eDoubleQuotedString(5),
-        eSingleQuotedString(6),
-        eIdent(7),
-        eInt(8),
-        eFloat(9),
-        eWhiteSpace(10);
-
-        public final int code;
-
-        private Type(int code) {
-            this.code = code;
-        }
+        eEof,  //must always be first
+        eNewLine,
+        eLineComment,
+        eBlockComment,
+        eDoubleQuotedString,
+        eSingleQuotedString,
+        eIdent,
+        eInt,
+        eFloat,
+        eWhiteSpace;
     }
 
     public Token(Type type, String fileName, long lineNumber, long col, String text) {
@@ -32,4 +26,10 @@ public class Token {
     public final String fileName;
     public final long lineNumber, col;
     public final String text;
+
+    static {
+        boolean assertsEnabled = false;
+        assert assertsEnabled = true;  // Intentional side-effect!!!
+        assert Type.eEof.ordinal() == 0;
+    }
 }
