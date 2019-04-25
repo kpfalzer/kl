@@ -1,4 +1,8 @@
 package klx.parser;
+import java.io.FileReader;
+import java.io.StringReader;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import klx.Token;
 
 %%
@@ -12,23 +16,44 @@ import klx.Token;
 %column
 
 %{
-	private static Token __lastToken = null;
+  public Scanner(String fileName) throws FileNotFoundException {
+    __fileName = fileName;
+    this.zzReader = new BufferedReader(new FileReader(__fileName));
+  }
+
+  public Scanner(String text, boolean unused) {
+    __fileName = null;
+    this.zzReader = new BufferedReader(new StringReader(text));
+  }
 
   @Override
   public Token getLVal() {
-    return null;
+    return __lastToken;
   }
 
   @Override
   public int yylex() {
+  try {
 		__lastToken = __yylex();
-		return __lastToken.type.ordinal();
+		return __lastToken.type;
+		}
+		catch (Exception e) {
+		throw new RuntimeException(e);
+		}
 	}
 
   @Override
   public void yyerror(String msg) {
-
+    //todo
   }
+
+  private Token getToken(int code) {
+    return new Token(code, __fileName, yyline, yycolumn, yytext());
+  }
+
+  private Token __lastToken = null;
+  private String __fileName = null;
+
 %}
 
 /* main character classes */
@@ -82,5 +107,5 @@ SingleCharacter = [^\r\n\'\\]
   {WhiteSpace} {}
 
   /* identifiers */ 
-  {Identifier} {}
+  {Identifier} {return getToken(IDENT);}
 }

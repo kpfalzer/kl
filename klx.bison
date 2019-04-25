@@ -6,15 +6,16 @@ import klx.Token ;
 %define api.parser.class {Parser}
 %define api.value.type {Token}
 
+%token IDENT
+%token PLUS
+
 %%
+
 input:
 	%empty
-|	input line
+|	IDENT PLUS IDENT
 ;
 
-line:
-	'a'
-;
 %%
 
 //epilogue

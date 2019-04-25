@@ -67,6 +67,11 @@ class Parser
     /** Token returned by the scanner to signal the end of its input.  */
     public static final int EOF = 0;
 
+/* Tokens.  */
+    /** Token number,to be returned by the scanner.  */
+    static final int IDENT = 258;
+    /** Token number,to be returned by the scanner.  */
+    static final int PLUS = 259;
 
 
     
@@ -302,7 +307,7 @@ class Parser
     switch (yyn)
       {
         
-/* "src/klx/parser/Parser.java":306  */ /* lalr1.java:480  */
+/* "src/klx/parser/Parser.java":311  */ /* lalr1.java:480  */
         default: break;
       }
 
@@ -609,7 +614,7 @@ class Parser
     return yyvalue == yytable_ninf_;
   }
 
-  private static final byte yypact_ninf_ = -1;
+  private static final byte yypact_ninf_ = -4;
   private static final byte yytable_ninf_ = -1;
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
@@ -619,7 +624,7 @@ class Parser
   {
     return new byte[]
     {
-      -1,     0,    -1,    -1,    -1
+      -3,    -2,     1,     0,    -4,    -4
     };
   }
 
@@ -631,7 +636,7 @@ class Parser
   {
     return new byte[]
     {
-       2,     0,     1,     4,     3
+       2,     0,     0,     0,     1,     3
     };
   }
 
@@ -641,7 +646,7 @@ class Parser
   {
     return new byte[]
     {
-      -1,    -1,    -1
+      -4,    -4
     };
   }
 
@@ -651,7 +656,7 @@ class Parser
   {
     return new byte[]
     {
-      -1,     1,     4
+      -1,     2
     };
   }
 
@@ -663,7 +668,7 @@ class Parser
   {
     return new byte[]
     {
-       2,     0,     0,     3
+       1,     4,     3,     5
     };
   }
 
@@ -672,7 +677,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,    -1,    -1,     3
+       3,     0,     4,     3
     };
   }
 
@@ -683,7 +688,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,     5,     0,     3,     6
+       0,     3,     6,     4,     0,     3
     };
   }
 
@@ -693,7 +698,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,     4,     5,     5,     6
+       0,     5,     6,     6
     };
   }
 
@@ -703,7 +708,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,     2,     0,     2,     1
+       0,     2,     0,     3
     };
   }
 
@@ -714,7 +719,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new short[]
     {
-       0,   256,   257,    97
+       0,   256,   257,   258,   259
     };
   }
 
@@ -725,7 +730,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new String[]
     {
-  "$end", "error", "$undefined", "'a'", "$accept", "input", "line", null
+  "$end", "error", "$undefined", "IDENT", "PLUS", "$accept", "input", null
     };
   }
 
@@ -735,7 +740,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,    11,    11,    12,    16
+       0,    15,    15,    16
     };
   }
 
@@ -775,7 +780,6 @@ private static final byte yycheck_[] = yycheck_init();
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     3,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -791,7 +795,8 @@ private static final byte yycheck_[] = yycheck_init();
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     1,     2
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     1,     2,     3,     4
     };
   }
 
@@ -804,21 +809,21 @@ private static final byte yycheck_[] = yycheck_init();
   }
 
   private static final int yylast_ = 3;
-  private static final int yynnts_ = 3;
+  private static final int yynnts_ = 2;
   private static final int yyempty_ = -2;
-  private static final int yyfinal_ = 2;
+  private static final int yyfinal_ = 4;
   private static final int yyterror_ = 1;
   private static final int yyerrcode_ = 256;
-  private static final int yyntokens_ = 4;
+  private static final int yyntokens_ = 5;
 
-  private static final int yyuser_token_number_max_ = 257;
+  private static final int yyuser_token_number_max_ = 259;
   private static final int yyundef_token_ = 2;
 
 /* User implementation code.  */
 
 }
 
-/* "klx.bison":18  */ /* lalr1.java:1060  */
+/* "klx.bison":19  */ /* lalr1.java:1060  */
 
 
 //epilogue
