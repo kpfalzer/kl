@@ -83,9 +83,9 @@ BasedWidth    = [1-9][0-9]*
 /* string and character literals */
 StringCharacter = [^\r\n\"\\]
 SingleCharacter = [^\r\n\'\\]
-RegexCharacter  = [^\r\n\}\\]
+RegexCharacter  = [^\r\n\}\\] | "\\}"
 
-%state STRING, CHARLITERAL, REGEX
+%state STRING, CHARLITERAL
 
 %%
 
@@ -184,29 +184,9 @@ RegexCharacter  = [^\r\n\}\\]
   ">>="                          { return getToken(EType.RSHIFTEQ); }
   ">>>="                         { return getToken(EType.URSHIFTEQ); }
 
-  "%r{"                          { yybegin(REGEX); __string.setLength(0); }
+  "%r{" {RegexCharacter}* "}"    { return getToken(EType.REGEX_LITERAL);}
   \"                             { yybegin(STRING); __string.setLength(0); }
   \'                             { yybegin(CHARLITERAL); }
-}
-
-<REGEX> {
-  "}"	{ 	
-  			yybegin(YYINITIAL); 
-  			return getToken(EType.REGEX_LITERAL, __string.toString()); 
-		}
-  
-  {RegexCharacter}+             { __string.append( yytext() ); }
-  
-  /* escape sequences */
-  "\\}"                         { __string.append( '}' ); }
-  
-  /* error cases */
-  \\.	{ 
-  	throw new RuntimeException("Illegal escape sequence \""+yytext()+"\""); 
-	}
-  {LineTerminator} { 
-  		throw new RuntimeException("Unterminated string at end of regex"); 
-	}
 }
 
 <STRING> {
