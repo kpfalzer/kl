@@ -47,7 +47,8 @@ import klx.Token;
 
   @Override
   public void yyerror(String msg) {
-    //todo
+	//todo
+    throw new RuntimeException(msg);
   }
 
   private Token getToken(int code, char c) {
@@ -102,8 +103,9 @@ BasedWidth    = [1-9][0-9]*
 /* string and character literals */
 StringCharacter = [^\r\n\"\\]
 SingleCharacter = [^\r\n\'\\]
+RegexCharacter  = [^\r\n\}\\]
 
-%state STRING, CHARLITERAL
+%state STRING, CHARLITERAL, REGEX
 
 %%
 
@@ -122,11 +124,13 @@ SingleCharacter = [^\r\n\'\\]
   "for"			{return getToken(K_FOR);}
   "implements"	{return getToken(K_IMPLEMENTS);}
   "if"			{return getToken(K_IF);}
+  "import"      {return getoToken(K_IMPORT);}
   "int"			{return getToken(K_INT);}
   "interface"	{return getToken(K_INTERFACE);}
   "nil"			{return getToken(K_NIL);}
   "not"			{return getToken(K_NOT);}
   "or"			{return getToken(K_OR);}
+  "package"		{return getToken(K_PACKAGE);}
   "private"		{return getToken(K_PRIVATE);}
   "protected"	{return getToken(K_PROTECTED);}
   "public"		{return getToken(K_PUBLIC);}
@@ -189,9 +193,31 @@ SingleCharacter = [^\r\n\'\\]
   "%="                           { return getToken(MODEQ); }
   "<<="                          { return getToken(LSHIFTEQ); }
   ">>="                          { return getToken(RSHIFTEQ); }
+  ">>>="                         { return getToken(URSHIFTEQ); }
 
+  "%r{"                          { yybegin(REGEX); __string.setLength(0); }
   \"                             { yybegin(STRING); __string.setLength(0); }
   \'                             { yybegin(CHARLITERAL); }
+}
+
+<REGEX> {
+  "}"	{ 	
+  			yybegin(YYINITIAL); 
+  			return getToken(REGEX_LITERAL, __string.toString()); 
+		}
+  
+  {RegexCharacter}+             { __string.append( yytext() ); }
+  
+  /* escape sequences */
+  "\\}"                         { __string.append( '}' ); }
+  
+  /* error cases */
+  \\.	{ 
+  	throw new RuntimeException("Illegal escape sequence \""+yytext()+"\""); 
+	}
+  {LineTerminator} { 
+  		throw new RuntimeException("Unterminated string at end of regex"); 
+	}
 }
 
 <STRING> {

@@ -19,11 +19,13 @@ import klx.Token ;
 %token K_FOR		"for"
 %token K_IMPLEMENTS "implements"
 %token K_IF			"if"
+%token K_IMPORT     "import"
 %token K_INT		"int"
 %token K_INTERFACE	"interface"
 %token K_NIL		"nil"
 %token K_NOT		"not"
 %token K_OR			"or"
+%token K_PACKAGE    "package"
 %token K_PRIVATE	"private"
 %token K_PROTECTED	"protected"
 %token K_PUBLIC		"public"
@@ -79,14 +81,43 @@ import klx.Token ;
 %token MODEQ		"%="
 %token LSHIFTEQ		"<<="
 %token RSHIFTEQ		">>="
+%token URSHIFTEQ	">>>="
 %token STRING_LITERAL		"<string>"
 %token CHARACTER_LITERAL	"<char>"		
+%token REGEX_LITERAL	    "%r{...}"
 
 %%
 
 input:
+	packageDecl
+	importDecl
+	body
+;
+
+packageDecl:
 	%empty
-|	IDENT PLUS IDENT
+|	K_PACKAGE //todo
+;
+
+importDecl:
+	%empty
+|	importDecl
+|	K_IMPORT //todo
+;
+
+body:
+	%empty
+|	body
+|	typeDecl
+|	expression
+;
+
+typeDecl:
+	K_INT //todo
+;
+
+expression:
+	IDENT	//todo
 ;
 
 %%
