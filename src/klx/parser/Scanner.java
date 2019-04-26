@@ -6,6 +6,7 @@ import java.io.StringReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import klx.Token;
+import klx.Token.EType;
 
 
 /**
@@ -13,7 +14,7 @@ import klx.Token;
  * <a href="http://www.jflex.de/">JFlex</a> 1.7.0
  * from the specification file <tt>klx.flex</tt>
  */
-public class Scanner implements Parser.Lexer {
+public class Scanner {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
@@ -427,32 +428,13 @@ public class Scanner implements Parser.Lexer {
         return new Scanner(text, true);
   }
 
-
-
-  @Override
-  public Token getLVal() {
-    return __lastToken;
-  }
-
-  @Override
-  public int yylex() throws java.io.IOException {
-		__lastToken = __yylex();
-		return __lastToken.type;
-	}
-
-  @Override
-  public void yyerror(String msg) {
-	//todo
-    throw new RuntimeException(msg);
-  }
-
-  private Token getToken(int code, char c) {
+  private Token getToken(EType code, char c) {
     return getToken(code, Character.toString(c));
   }
-  private Token getToken(int code, String str) {
+  private Token getToken(EType code, String str) {
     return new Token(code, __fileName, yyline+1, yycolumn+1, str);
   }
-  private Token getToken(int code) {
+  private Token getToken(EType code) {
     return getToken(code, yytext());
   }
 
@@ -691,7 +673,7 @@ public class Scanner implements Parser.Lexer {
    * @return      the next token
    * @exception   java.io.IOException  if any I/O-Error occurs
    */
-  public Token __yylex() throws java.io.IOException {
+  public Token nextToken() throws java.io.IOException {
     int zzInput;
     int zzAction;
 
@@ -828,7 +810,7 @@ public class Scanner implements Parser.Lexer {
       if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
         zzAtEOF = true;
               {
-                return getToken(EOF);
+                return getToken(EType.EOF);
               }
       }
       else {
@@ -845,27 +827,27 @@ public class Scanner implements Parser.Lexer {
             // fall through
           case 111: break;
           case 3: 
-            { return getToken(DIV);
+            { return getToken(EType.DIV);
             } 
             // fall through
           case 112: break;
           case 4: 
-            { return getToken(MULT);
+            { return getToken(EType.MULT);
             } 
             // fall through
           case 113: break;
           case 5: 
-            { return getToken(IDENT);
+            { return getToken(EType.IDENT);
             } 
             // fall through
           case 114: break;
           case 6: 
-            { return getToken(DOT);
+            { return getToken(EType.DOT);
             } 
             // fall through
           case 115: break;
           case 7: 
-            { return getToken(MINUS);
+            { return getToken(EType.MINUS);
             } 
             // fall through
           case 116: break;
@@ -880,102 +862,102 @@ public class Scanner implements Parser.Lexer {
             // fall through
           case 118: break;
           case 10: 
-            { return getToken(RBRACE);
+            { return getToken(EType.RBRACE);
             } 
             // fall through
           case 119: break;
           case 11: 
-            { return getToken(LPAREN);
+            { return getToken(EType.LPAREN);
             } 
             // fall through
           case 120: break;
           case 12: 
-            { return getToken(RPAREN);
+            { return getToken(EType.RPAREN);
             } 
             // fall through
           case 121: break;
           case 13: 
-            { return getToken(LBRACE);
+            { return getToken(EType.LBRACE);
             } 
             // fall through
           case 122: break;
           case 14: 
-            { return getToken(LBRACK);
+            { return getToken(EType.LBRACK);
             } 
             // fall through
           case 123: break;
           case 15: 
-            { return getToken(RBRACK);
+            { return getToken(EType.RBRACK);
             } 
             // fall through
           case 124: break;
           case 16: 
-            { return getToken(SEMICOLON);
+            { return getToken(EType.SEMICOLON);
             } 
             // fall through
           case 125: break;
           case 17: 
-            { return getToken(COMMA);
+            { return getToken(EType.COMMA);
             } 
             // fall through
           case 126: break;
           case 18: 
-            { return getToken(EQ);
+            { return getToken(EType.EQ);
             } 
             // fall through
           case 127: break;
           case 19: 
-            { return getToken(GT);
+            { return getToken(EType.GT);
             } 
             // fall through
           case 128: break;
           case 20: 
-            { return getToken(LT);
+            { return getToken(EType.LT);
             } 
             // fall through
           case 129: break;
           case 21: 
-            { return getToken(NOT);
+            { return getToken(EType.NOT);
             } 
             // fall through
           case 130: break;
           case 22: 
-            { return getToken(COMP);
+            { return getToken(EType.COMP);
             } 
             // fall through
           case 131: break;
           case 23: 
-            { return getToken(QUESTION);
+            { return getToken(EType.QUESTION);
             } 
             // fall through
           case 132: break;
           case 24: 
-            { return getToken(COLON);
+            { return getToken(EType.COLON);
             } 
             // fall through
           case 133: break;
           case 25: 
-            { return getToken(AND);
+            { return getToken(EType.AND);
             } 
             // fall through
           case 134: break;
           case 26: 
-            { return getToken(OR);
+            { return getToken(EType.OR);
             } 
             // fall through
           case 135: break;
           case 27: 
-            { return getToken(PLUS);
+            { return getToken(EType.PLUS);
             } 
             // fall through
           case 136: break;
           case 28: 
-            { return getToken(XOR);
+            { return getToken(EType.XOR);
             } 
             // fall through
           case 137: break;
           case 29: 
-            { return getToken(MOD);
+            { return getToken(EType.MOD);
             } 
             // fall through
           case 138: break;
@@ -991,7 +973,7 @@ public class Scanner implements Parser.Lexer {
           case 140: break;
           case 32: 
             { yybegin(YYINITIAL); 
-  			return getToken(STRING_LITERAL, __string.toString());
+  			return getToken(EType.STRING_LITERAL, __string.toString());
             } 
             // fall through
           case 141: break;
@@ -1007,7 +989,7 @@ public class Scanner implements Parser.Lexer {
           case 143: break;
           case 35: 
             { yybegin(YYINITIAL); 
-  			return getToken(REGEX_LITERAL, __string.toString());
+  			return getToken(EType.REGEX_LITERAL, __string.toString());
             } 
             // fall through
           case 144: break;
@@ -1017,107 +999,107 @@ public class Scanner implements Parser.Lexer {
             // fall through
           case 145: break;
           case 37: 
-            { return getToken(DIVEQ);
+            { return getToken(EType.DIVEQ);
             } 
             // fall through
           case 146: break;
           case 38: 
-            { return getToken(MULTEQ);
+            { return getToken(EType.MULTEQ);
             } 
             // fall through
           case 147: break;
           case 39: 
-            { return getToken(DOTDOT);
+            { return getToken(EType.DOTDOT);
             } 
             // fall through
           case 148: break;
           case 40: 
-            { return getToken(MINUSMINUS);
+            { return getToken(EType.MINUSMINUS);
             } 
             // fall through
           case 149: break;
           case 41: 
-            { return getToken(MINUSEQ);
+            { return getToken(EType.MINUSEQ);
             } 
             // fall through
           case 150: break;
           case 42: 
-            { return getToken(K_OR);
+            { return getToken(EType.K_OR);
             } 
             // fall through
           case 151: break;
           case 43: 
-            { return getToken(K_IF);
+            { return getToken(EType.K_IF);
             } 
             // fall through
           case 152: break;
           case 44: 
-            { return getToken(EQEQ);
+            { return getToken(EType.EQEQ);
             } 
             // fall through
           case 153: break;
           case 45: 
-            { return getToken(GTEQ);
+            { return getToken(EType.GTEQ);
             } 
             // fall through
           case 154: break;
           case 46: 
-            { return getToken(RSHIFT);
+            { return getToken(EType.RSHIFT);
             } 
             // fall through
           case 155: break;
           case 47: 
-            { return getToken(LTEQ);
+            { return getToken(EType.LTEQ);
             } 
             // fall through
           case 156: break;
           case 48: 
-            { return getToken(LSHIFT);
+            { return getToken(EType.LSHIFT);
             } 
             // fall through
           case 157: break;
           case 49: 
-            { return getToken(NOTEQ);
+            { return getToken(EType.NOTEQ);
             } 
             // fall through
           case 158: break;
           case 50: 
-            { return getToken(ANDEQ);
+            { return getToken(EType.ANDEQ);
             } 
             // fall through
           case 159: break;
           case 51: 
-            { return getToken(ANDAND);
+            { return getToken(EType.ANDAND);
             } 
             // fall through
           case 160: break;
           case 52: 
-            { return getToken(OREQ);
+            { return getToken(EType.OREQ);
             } 
             // fall through
           case 161: break;
           case 53: 
-            { return getToken(OROR);
+            { return getToken(EType.OROR);
             } 
             // fall through
           case 162: break;
           case 54: 
-            { return getToken(PLUSEQ);
+            { return getToken(EType.PLUSEQ);
             } 
             // fall through
           case 163: break;
           case 55: 
-            { return getToken(PLUSPLUS);
+            { return getToken(EType.PLUSPLUS);
             } 
             // fall through
           case 164: break;
           case 56: 
-            { return getToken(XOREQ);
+            { return getToken(EType.XOREQ);
             } 
             // fall through
           case 165: break;
           case 57: 
-            { return getToken(MODEQ);
+            { return getToken(EType.MODEQ);
             } 
             // fall through
           case 166: break;
@@ -1174,7 +1156,7 @@ public class Scanner implements Parser.Lexer {
           case 176: break;
           case 68: 
             { yybegin(YYINITIAL); 
-		return getToken(CHARACTER_LITERAL, yytext().charAt(0));
+		return getToken(EType.CHARACTER_LITERAL, yytext().charAt(0));
             } 
             // fall through
           case 177: break;
@@ -1184,52 +1166,52 @@ public class Scanner implements Parser.Lexer {
             // fall through
           case 178: break;
           case 70: 
-            { return getToken(K_AND);
+            { return getToken(EType.K_AND);
             } 
             // fall through
           case 179: break;
           case 71: 
-            { return getToken(K_NOT);
+            { return getToken(EType.K_NOT);
             } 
             // fall through
           case 180: break;
           case 72: 
-            { return getToken(K_NIL);
+            { return getToken(EType.K_NIL);
             } 
             // fall through
           case 181: break;
           case 73: 
-            { return getToken(K_DEF);
+            { return getToken(EType.K_DEF);
             } 
             // fall through
           case 182: break;
           case 74: 
-            { return getToken(K_FOR);
+            { return getToken(EType.K_FOR);
             } 
             // fall through
           case 183: break;
           case 75: 
-            { return getToken(K_INT);
+            { return getToken(EType.K_INT);
             } 
             // fall through
           case 184: break;
           case 76: 
-            { return getToken(K_VAR);
+            { return getToken(EType.K_VAR);
             } 
             // fall through
           case 185: break;
           case 77: 
-            { return getToken(RSHIFTEQ);
+            { return getToken(EType.RSHIFTEQ);
             } 
             // fall through
           case 186: break;
           case 78: 
-            { return getToken(URSHIFT);
+            { return getToken(EType.URSHIFT);
             } 
             // fall through
           case 187: break;
           case 79: 
-            { return getToken(LSHIFTEQ);
+            { return getToken(EType.LSHIFTEQ);
             } 
             // fall through
           case 188: break;
@@ -1241,147 +1223,147 @@ public class Scanner implements Parser.Lexer {
           case 81: 
             { yybegin(YYINITIAL); 
 	    int val = Integer.parseInt(yytext().substring(1,yylength()-1),8);
-	    return getToken(CHARACTER_LITERAL, (char)val);
+	    return getToken(EType.CHARACTER_LITERAL, (char)val);
             } 
             // fall through
           case 190: break;
           case 82: 
-            { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\'');
+            { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\'');
             } 
             // fall through
           case 191: break;
           case 83: 
-            { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\"');
+            { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\"');
             } 
             // fall through
           case 192: break;
           case 84: 
-            { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\\');
+            { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\\');
             } 
             // fall through
           case 193: break;
           case 85: 
-            { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\n');
+            { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\n');
             } 
             // fall through
           case 194: break;
           case 86: 
-            { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\b');
+            { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\b');
             } 
             // fall through
           case 195: break;
           case 87: 
-            { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\t');
+            { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\t');
             } 
             // fall through
           case 196: break;
           case 88: 
-            { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\f');
+            { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\f');
             } 
             // fall through
           case 197: break;
           case 89: 
-            { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\r');
+            { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\r');
             } 
             // fall through
           case 198: break;
           case 90: 
-            { return getToken(K_BOOL);
+            { return getToken(EType.K_BOOL);
             } 
             // fall through
           case 199: break;
           case 91: 
-            { return getToken(K_TRUE);
+            { return getToken(EType.K_TRUE);
             } 
             // fall through
           case 200: break;
           case 92: 
-            { return getToken(K_ELSE);
+            { return getToken(EType.K_ELSE);
             } 
             // fall through
           case 201: break;
           case 93: 
-            { return getToken(K_ELIF);
+            { return getToken(EType.K_ELIF);
             } 
             // fall through
           case 202: break;
           case 94: 
-            { return getToken(URSHIFTEQ);
+            { return getToken(EType.URSHIFTEQ);
             } 
             // fall through
           case 203: break;
           case 95: 
-            { return getToken(K_CONST);
+            { return getToken(EType.K_CONST);
             } 
             // fall through
           case 204: break;
           case 96: 
-            { return getToken(K_CLASS);
+            { return getToken(EType.K_CLASS);
             } 
             // fall through
           case 205: break;
           case 97: 
-            { return getToken(K_FALSE);
+            { return getToken(EType.K_FALSE);
             } 
             // fall through
           case 206: break;
           case 98: 
-            { return getToken(K_FLOAT);
+            { return getToken(EType.K_FLOAT);
             } 
             // fall through
           case 207: break;
           case 99: 
-            { return getToken(K_WHILE);
+            { return getToken(EType.K_WHILE);
             } 
             // fall through
           case 208: break;
           case 100: 
-            { return getToken(K_STATIC);
+            { return getToken(EType.K_STATIC);
             } 
             // fall through
           case 209: break;
           case 101: 
-            { return getoToken(K_IMPORT);
+            { return getToken(EType.K_IMPORT);
             } 
             // fall through
           case 210: break;
           case 102: 
-            { return getToken(K_PUBLIC);
+            { return getToken(EType.K_PUBLIC);
             } 
             // fall through
           case 211: break;
           case 103: 
-            { return getToken(K_UNLESS);
+            { return getToken(EType.K_UNLESS);
             } 
             // fall through
           case 212: break;
           case 104: 
-            { return getToken(K_EXTENDS);
+            { return getToken(EType.K_EXTENDS);
             } 
             // fall through
           case 213: break;
           case 105: 
-            { return getToken(K_PACKAGE);
+            { return getToken(EType.K_PACKAGE);
             } 
             // fall through
           case 214: break;
           case 106: 
-            { return getToken(K_PRIVATE);
+            { return getToken(EType.K_PRIVATE);
             } 
             // fall through
           case 215: break;
           case 107: 
-            { return getToken(K_INTERFACE);
+            { return getToken(EType.K_INTERFACE);
             } 
             // fall through
           case 216: break;
           case 108: 
-            { return getToken(K_PROTECTED);
+            { return getToken(EType.K_PROTECTED);
             } 
             // fall through
           case 217: break;
           case 109: 
-            { return getToken(K_IMPLEMENTS);
+            { return getToken(EType.K_IMPLEMENTS);
             } 
             // fall through
           case 218: break;

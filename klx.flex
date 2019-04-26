@@ -4,13 +4,13 @@ import java.io.StringReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import klx.Token;
+import klx.Token.EType;
 
 %%
 
 %public
 %class Scanner
-%function __yylex
-%implements Parser.Lexer
+%function nextToken
 %type Token
 %line
 %column
@@ -32,32 +32,13 @@ import klx.Token;
         return new Scanner(text, true);
   }
 
-
-
-  @Override
-  public Token getLVal() {
-    return __lastToken;
-  }
-
-  @Override
-  public int yylex() throws java.io.IOException {
-		__lastToken = __yylex();
-		return __lastToken.type;
-	}
-
-  @Override
-  public void yyerror(String msg) {
-	//todo
-    throw new RuntimeException(msg);
-  }
-
-  private Token getToken(int code, char c) {
+  private Token getToken(EType code, char c) {
     return getToken(code, Character.toString(c));
   }
-  private Token getToken(int code, String str) {
+  private Token getToken(EType code, String str) {
     return new Token(code, __fileName, yyline+1, yycolumn+1, str);
   }
-  private Token getToken(int code) {
+  private Token getToken(EType code) {
     return getToken(code, yytext());
   }
 
@@ -111,89 +92,89 @@ RegexCharacter  = [^\r\n\}\\]
 
 <YYINITIAL> {
 
-  "and" 		{return getToken(K_AND);}
-  "bool" 		{return getToken(K_BOOL);}
-  "class" 		{return getToken(K_CLASS);}
-  "const"		{return getToken(K_CONST);}
-  "def"			{return getToken(K_DEF);}
-  "elif"		{return getToken(K_ELIF);}
-  "else"		{return getToken(K_ELSE);}
-  "extends"		{return getToken(K_EXTENDS);}
-  "false" 		{return getToken(K_FALSE);}
-  "float"		{return getToken(K_FLOAT);}
-  "for"			{return getToken(K_FOR);}
-  "implements"	{return getToken(K_IMPLEMENTS);}
-  "if"			{return getToken(K_IF);}
-  "import"      {return getoToken(K_IMPORT);}
-  "int"			{return getToken(K_INT);}
-  "interface"	{return getToken(K_INTERFACE);}
-  "nil"			{return getToken(K_NIL);}
-  "not"			{return getToken(K_NOT);}
-  "or"			{return getToken(K_OR);}
-  "package"		{return getToken(K_PACKAGE);}
-  "private"		{return getToken(K_PRIVATE);}
-  "protected"	{return getToken(K_PROTECTED);}
-  "public"		{return getToken(K_PUBLIC);}
-  "static" 		{return getToken(K_STATIC);}
-  "true" 		{return getToken(K_TRUE);}
-  "unless" 		{return getToken(K_UNLESS);}
-  "var"			{return getToken(K_VAR);}
-  "while"		{return getToken(K_WHILE);}
+  "and" 		{return getToken(EType.K_AND);}
+  "bool" 		{return getToken(EType.K_BOOL);}
+  "class" 		{return getToken(EType.K_CLASS);}
+  "const"		{return getToken(EType.K_CONST);}
+  "def"			{return getToken(EType.K_DEF);}
+  "elif"		{return getToken(EType.K_ELIF);}
+  "else"		{return getToken(EType.K_ELSE);}
+  "extends"		{return getToken(EType.K_EXTENDS);}
+  "false" 		{return getToken(EType.K_FALSE);}
+  "float"		{return getToken(EType.K_FLOAT);}
+  "for"			{return getToken(EType.K_FOR);}
+  "implements"	{return getToken(EType.K_IMPLEMENTS);}
+  "if"			{return getToken(EType.K_IF);}
+  "import"      {return getToken(EType.K_IMPORT);}
+  "int"			{return getToken(EType.K_INT);}
+  "interface"	{return getToken(EType.K_INTERFACE);}
+  "nil"			{return getToken(EType.K_NIL);}
+  "not"			{return getToken(EType.K_NOT);}
+  "or"			{return getToken(EType.K_OR);}
+  "package"		{return getToken(EType.K_PACKAGE);}
+  "private"		{return getToken(EType.K_PRIVATE);}
+  "protected"	{return getToken(EType.K_PROTECTED);}
+  "public"		{return getToken(EType.K_PUBLIC);}
+  "static" 		{return getToken(EType.K_STATIC);}
+  "true" 		{return getToken(EType.K_TRUE);}
+  "unless" 		{return getToken(EType.K_UNLESS);}
+  "var"			{return getToken(EType.K_VAR);}
+  "while"		{return getToken(EType.K_WHILE);}
   
   {Comment} {/*todo: accumulate*/}
 
   {WhiteSpace} {/*nothing*/}
 
-  {Identifier} {return getToken(IDENT);}
+  {Identifier} {return getToken(EType.IDENT);}
 
-  "("                            { return getToken(LPAREN); }
-  ")"                            { return getToken(RPAREN); }
-  "{"                            { return getToken(LBRACE); }
-  "}"                            { return getToken(RBRACE); }
-  "["                            { return getToken(LBRACK); }
-  "]"                            { return getToken(RBRACK); }
-  ";"                            { return getToken(SEMICOLON); }
-  ","                            { return getToken(COMMA); }
-  "."                            { return getToken(DOT); }
-  ".."                           { return getToken(DOTDOT); }
+  "("                            { return getToken(EType.LPAREN); }
+  ")"                            { return getToken(EType.RPAREN); }
+  "{"                            { return getToken(EType.LBRACE); }
+  "}"                            { return getToken(EType.RBRACE); }
+  "["                            { return getToken(EType.LBRACK); }
+  "]"                            { return getToken(EType.RBRACK); }
+  ";"                            { return getToken(EType.SEMICOLON); }
+  ","                            { return getToken(EType.COMMA); }
+  "."                            { return getToken(EType.DOT); }
+  ".."                           { return getToken(EType.DOTDOT); }
   
-  "="                            { return getToken(EQ); }
-  ">"                            { return getToken(GT); }
-  "<"                            { return getToken(LT); }
-  "!"                            { return getToken(NOT); }
-  "~"                            { return getToken(COMP); }
-  "?"                            { return getToken(QUESTION); }
-  ":"                            { return getToken(COLON); }
-  "=="                           { return getToken(EQEQ); }
-  "<="                           { return getToken(LTEQ); }
-  ">="                           { return getToken(GTEQ); }
-  "!="                           { return getToken(NOTEQ); }
-  "&&"                           { return getToken(ANDAND); }
-  "||"                           { return getToken(OROR); }
-  "++"                           { return getToken(PLUSPLUS); }
-  "--"                           { return getToken(MINUSMINUS); }
-  "+"                            { return getToken(PLUS); }
-  "-"                            { return getToken(MINUS); }
-  "*"                            { return getToken(MULT); }
-  "/"                            { return getToken(DIV); }
-  "&"                            { return getToken(AND); }
-  "|"                            { return getToken(OR); }
-  "^"                            { return getToken(XOR); }
-  "%"                            { return getToken(MOD); }
-  "<<"                           { return getToken(LSHIFT); }
-  ">>"                           { return getToken(RSHIFT); }
-  ">>>"                          { return getToken(URSHIFT); }
-  "+="                           { return getToken(PLUSEQ); }
-  "-="                           { return getToken(MINUSEQ); }
-  "*="                           { return getToken(MULTEQ); }
-  "/="                           { return getToken(DIVEQ); }
-  "&="                           { return getToken(ANDEQ); }
-  "|="                           { return getToken(OREQ); }
-  "^="                           { return getToken(XOREQ); }
-  "%="                           { return getToken(MODEQ); }
-  "<<="                          { return getToken(LSHIFTEQ); }
-  ">>="                          { return getToken(RSHIFTEQ); }
-  ">>>="                         { return getToken(URSHIFTEQ); }
+  "="                            { return getToken(EType.EQ); }
+  ">"                            { return getToken(EType.GT); }
+  "<"                            { return getToken(EType.LT); }
+  "!"                            { return getToken(EType.NOT); }
+  "~"                            { return getToken(EType.COMP); }
+  "?"                            { return getToken(EType.QUESTION); }
+  ":"                            { return getToken(EType.COLON); }
+  "=="                           { return getToken(EType.EQEQ); }
+  "<="                           { return getToken(EType.LTEQ); }
+  ">="                           { return getToken(EType.GTEQ); }
+  "!="                           { return getToken(EType.NOTEQ); }
+  "&&"                           { return getToken(EType.ANDAND); }
+  "||"                           { return getToken(EType.OROR); }
+  "++"                           { return getToken(EType.PLUSPLUS); }
+  "--"                           { return getToken(EType.MINUSMINUS); }
+  "+"                            { return getToken(EType.PLUS); }
+  "-"                            { return getToken(EType.MINUS); }
+  "*"                            { return getToken(EType.MULT); }
+  "/"                            { return getToken(EType.DIV); }
+  "&"                            { return getToken(EType.AND); }
+  "|"                            { return getToken(EType.OR); }
+  "^"                            { return getToken(EType.XOR); }
+  "%"                            { return getToken(EType.MOD); }
+  "<<"                           { return getToken(EType.LSHIFT); }
+  ">>"                           { return getToken(EType.RSHIFT); }
+  ">>>"                          { return getToken(EType.URSHIFT); }
+  "+="                           { return getToken(EType.PLUSEQ); }
+  "-="                           { return getToken(EType.MINUSEQ); }
+  "*="                           { return getToken(EType.MULTEQ); }
+  "/="                           { return getToken(EType.DIVEQ); }
+  "&="                           { return getToken(EType.ANDEQ); }
+  "|="                           { return getToken(EType.OREQ); }
+  "^="                           { return getToken(EType.XOREQ); }
+  "%="                           { return getToken(EType.MODEQ); }
+  "<<="                          { return getToken(EType.LSHIFTEQ); }
+  ">>="                          { return getToken(EType.RSHIFTEQ); }
+  ">>>="                         { return getToken(EType.URSHIFTEQ); }
 
   "%r{"                          { yybegin(REGEX); __string.setLength(0); }
   \"                             { yybegin(STRING); __string.setLength(0); }
@@ -203,7 +184,7 @@ RegexCharacter  = [^\r\n\}\\]
 <REGEX> {
   "}"	{ 	
   			yybegin(YYINITIAL); 
-  			return getToken(REGEX_LITERAL, __string.toString()); 
+  			return getToken(EType.REGEX_LITERAL, __string.toString()); 
 		}
   
   {RegexCharacter}+             { __string.append( yytext() ); }
@@ -223,7 +204,7 @@ RegexCharacter  = [^\r\n\}\\]
 <STRING> {
   \"	{ 	
   			yybegin(YYINITIAL); 
-  			return getToken(STRING_LITERAL, __string.toString()); 
+  			return getToken(EType.STRING_LITERAL, __string.toString()); 
 		}
   
   {StringCharacter}+             { __string.append( yytext() ); }
@@ -254,22 +235,22 @@ RegexCharacter  = [^\r\n\}\\]
 <CHARLITERAL> {
   {SingleCharacter}\'  { 
   		yybegin(YYINITIAL); 
-		return getToken(CHARACTER_LITERAL, yytext().charAt(0)); 
+		return getToken(EType.CHARACTER_LITERAL, yytext().charAt(0)); 
 	}
   
   /* escape sequences */
-  "\\b"\'      { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\b');}
-  "\\t"\'      { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\t');}
-  "\\n"\'      { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\n');}
-  "\\f"\'      { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\f');}
-  "\\r"\'      { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\r');}
-  "\\\""\'     { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\"');}
-  "\\'"\'      { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\'');}
-  "\\\\"\'     { yybegin(YYINITIAL); return getToken(CHARACTER_LITERAL, '\\'); }
+  "\\b"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\b');}
+  "\\t"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\t');}
+  "\\n"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\n');}
+  "\\f"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\f');}
+  "\\r"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\r');}
+  "\\\""\'     { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\"');}
+  "\\'"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\'');}
+  "\\\\"\'     { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\\'); }
   \\[0-3]?{OctDigit}?{OctDigit}\' { 
   		yybegin(YYINITIAL); 
 	    int val = Integer.parseInt(yytext().substring(1,yylength()-1),8);
-	    return getToken(CHARACTER_LITERAL, (char)val); 
+	    return getToken(EType.CHARACTER_LITERAL, (char)val); 
 	}
   
   /* error cases */
@@ -284,4 +265,4 @@ RegexCharacter  = [^\r\n\}\\]
 /* error fallback */
 [^]      { throw new RuntimeException("Illegal character \""+yytext()+
            "\" at line "+yyline+", column "+yycolumn); }
-<<EOF>>  { return getToken(EOF); }
+<<EOF>>  { return getToken(EType.EOF); }
