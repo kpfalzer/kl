@@ -141,81 +141,83 @@ class Parser
     /** Token number,to be returned by the scanner.  */
     static final int DOT = 293;
     /** Token number,to be returned by the scanner.  */
-    static final int EQ = 294;
+    static final int DOTDOT = 294;
     /** Token number,to be returned by the scanner.  */
-    static final int GT = 295;
+    static final int EQ = 295;
     /** Token number,to be returned by the scanner.  */
-    static final int LT = 296;
+    static final int GT = 296;
     /** Token number,to be returned by the scanner.  */
-    static final int NOT = 297;
+    static final int LT = 297;
     /** Token number,to be returned by the scanner.  */
-    static final int COMP = 298;
+    static final int NOT = 298;
     /** Token number,to be returned by the scanner.  */
-    static final int QUESTION = 299;
+    static final int COMP = 299;
     /** Token number,to be returned by the scanner.  */
-    static final int COLON = 300;
+    static final int QUESTION = 300;
     /** Token number,to be returned by the scanner.  */
-    static final int EQEQ = 301;
+    static final int COLON = 301;
     /** Token number,to be returned by the scanner.  */
-    static final int LTEQ = 302;
+    static final int EQEQ = 302;
     /** Token number,to be returned by the scanner.  */
-    static final int GTEQ = 303;
+    static final int LTEQ = 303;
     /** Token number,to be returned by the scanner.  */
-    static final int NOTEQ = 304;
+    static final int GTEQ = 304;
     /** Token number,to be returned by the scanner.  */
-    static final int ANDAND = 305;
+    static final int NOTEQ = 305;
     /** Token number,to be returned by the scanner.  */
-    static final int OROR = 306;
+    static final int ANDAND = 306;
     /** Token number,to be returned by the scanner.  */
-    static final int PLUSPLUS = 307;
+    static final int OROR = 307;
     /** Token number,to be returned by the scanner.  */
-    static final int MINUSMINUS = 308;
+    static final int PLUSPLUS = 308;
     /** Token number,to be returned by the scanner.  */
-    static final int PLUS = 309;
+    static final int MINUSMINUS = 309;
     /** Token number,to be returned by the scanner.  */
-    static final int MINUS = 310;
+    static final int PLUS = 310;
     /** Token number,to be returned by the scanner.  */
-    static final int MULT = 311;
+    static final int MINUS = 311;
     /** Token number,to be returned by the scanner.  */
-    static final int DIV = 312;
+    static final int MULT = 312;
     /** Token number,to be returned by the scanner.  */
-    static final int AND = 313;
+    static final int DIV = 313;
     /** Token number,to be returned by the scanner.  */
-    static final int OR = 314;
+    static final int AND = 314;
     /** Token number,to be returned by the scanner.  */
-    static final int XOR = 315;
+    static final int OR = 315;
     /** Token number,to be returned by the scanner.  */
-    static final int MOD = 316;
+    static final int XOR = 316;
     /** Token number,to be returned by the scanner.  */
-    static final int LSHIFT = 317;
+    static final int MOD = 317;
     /** Token number,to be returned by the scanner.  */
-    static final int RSHIFT = 318;
+    static final int LSHIFT = 318;
     /** Token number,to be returned by the scanner.  */
-    static final int URSHIFT = 319;
+    static final int RSHIFT = 319;
     /** Token number,to be returned by the scanner.  */
-    static final int PLUSEQ = 320;
+    static final int URSHIFT = 320;
     /** Token number,to be returned by the scanner.  */
-    static final int MINUSEQ = 321;
+    static final int PLUSEQ = 321;
     /** Token number,to be returned by the scanner.  */
-    static final int MULTEQ = 322;
+    static final int MINUSEQ = 322;
     /** Token number,to be returned by the scanner.  */
-    static final int DIVEQ = 323;
+    static final int MULTEQ = 323;
     /** Token number,to be returned by the scanner.  */
-    static final int ANDEQ = 324;
+    static final int DIVEQ = 324;
     /** Token number,to be returned by the scanner.  */
-    static final int OREQ = 325;
+    static final int ANDEQ = 325;
     /** Token number,to be returned by the scanner.  */
-    static final int XOREQ = 326;
+    static final int OREQ = 326;
     /** Token number,to be returned by the scanner.  */
-    static final int MODEQ = 327;
+    static final int XOREQ = 327;
     /** Token number,to be returned by the scanner.  */
-    static final int LSHIFTEQ = 328;
+    static final int MODEQ = 328;
     /** Token number,to be returned by the scanner.  */
-    static final int RSHIFTEQ = 329;
+    static final int LSHIFTEQ = 329;
     /** Token number,to be returned by the scanner.  */
-    static final int STRING_LITERAL = 330;
+    static final int RSHIFTEQ = 330;
     /** Token number,to be returned by the scanner.  */
-    static final int CHARACTER_LITERAL = 331;
+    static final int STRING_LITERAL = 331;
+    /** Token number,to be returned by the scanner.  */
+    static final int CHARACTER_LITERAL = 332;
 
 
     
@@ -451,7 +453,7 @@ class Parser
     switch (yyn)
       {
         
-/* "src/klx/parser/Parser.java":455  */ /* lalr1.java:480  */
+/* "src/klx/parser/Parser.java":457  */ /* lalr1.java:480  */
         default: break;
       }
 
@@ -758,7 +760,7 @@ class Parser
     return yyvalue == yytable_ninf_;
   }
 
-  private static final byte yypact_ninf_ = -54;
+  private static final byte yypact_ninf_ = -55;
   private static final byte yytable_ninf_ = -1;
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
@@ -768,7 +770,7 @@ class Parser
   {
     return new byte[]
     {
-     -29,   -53,     2,   -26,   -54,   -54
+     -29,   -54,     2,   -26,   -55,   -55
     };
   }
 
@@ -790,7 +792,7 @@ class Parser
   {
     return new byte[]
     {
-     -54,   -54
+     -55,   -55
     };
   }
 
@@ -821,7 +823,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-      29,    54,     0,    29
+      29,    55,     0,    29
     };
   }
 
@@ -832,7 +834,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,    29,    78,    54,     0,    29
+       0,    29,    79,    55,     0,    29
     };
   }
 
@@ -842,7 +844,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,    77,    78,    78
+       0,    78,    79,    79
     };
   }
 
@@ -870,7 +872,7 @@ private static final byte yycheck_[] = yycheck_init();
      295,   296,   297,   298,   299,   300,   301,   302,   303,   304,
      305,   306,   307,   308,   309,   310,   311,   312,   313,   314,
      315,   316,   317,   318,   319,   320,   321,   322,   323,   324,
-     325,   326,   327,   328,   329,   330,   331
+     325,   326,   327,   328,   329,   330,   331,   332
     };
   }
 
@@ -881,17 +883,19 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new String[]
     {
-  "$end", "error", "$undefined", "K_AND", "K_BOOL", "K_CLASS", "K_CONST",
-  "K_DEF", "K_ELIF", "K_ELSE", "K_EXTENDS", "K_FALSE", "K_FLOAT", "K_FOR",
-  "K_IMPLEMENTS", "K_IF", "K_INT", "K_INTERFACE", "K_NIL", "K_NOT", "K_OR",
-  "K_PRIVATE", "K_PROTECTED", "K_PUBLIC", "K_STATIC", "K_TRUE", "K_UNLESS",
-  "K_VAR", "K_WHILE", "IDENT", "LPAREN", "RPAREN", "LBRACE", "RBRACE",
-  "LBRACK", "RBRACK", "SEMICOLON", "COMMA", "DOT", "EQ", "GT", "LT", "NOT",
-  "COMP", "QUESTION", "COLON", "EQEQ", "LTEQ", "GTEQ", "NOTEQ", "ANDAND",
-  "OROR", "PLUSPLUS", "MINUSMINUS", "PLUS", "MINUS", "MULT", "DIV", "AND",
-  "OR", "XOR", "MOD", "LSHIFT", "RSHIFT", "URSHIFT", "PLUSEQ", "MINUSEQ",
-  "MULTEQ", "DIVEQ", "ANDEQ", "OREQ", "XOREQ", "MODEQ", "LSHIFTEQ",
-  "RSHIFTEQ", "STRING_LITERAL", "CHARACTER_LITERAL", "$accept", "input", null
+  "$end", "error", "$undefined", "\"and\"", "\"bool\"", "\"class\"",
+  "\"const\"", "\"def\"", "\"elif\"", "\"else\"", "\"extends\"",
+  "\"false\"", "\"float\"", "\"for\"", "\"implements\"", "\"if\"",
+  "\"int\"", "\"interface\"", "\"nil\"", "\"not\"", "\"or\"",
+  "\"private\"", "\"protected\"", "\"public\"", "\"static\"", "\"true\"",
+  "\"unless\"", "\"var\"", "\"while\"", "\"<ident>\"", "\"(\"", "\")\"",
+  "\"{\"", "\"}\"", "\"[\"", "\"]\"", "\";\"", "\",\"", "\".\"", "\"..\"",
+  "\"=\"", "\">\"", "\"<\"", "\"!\"", "\"~\"", "\"?\"", "\":\"", "\"==\"",
+  "\"<=\"", "\">=\"", "\"!=\"", "\"&&\"", "\"||\"", "\"++\"", "\"--\"",
+  "\"+\"", "\"-\"", "\"*\"", "\"/\"", "\"&\"", "\"|\"", "\"^\"", "\"%\"",
+  "\"<<\"", "\">>\"", "\">>>\"", "\"+=\"", "\"-=\"", "\"*=\"", "\"/=\"",
+  "\"&=\"", "\"|=\"", "\"^=\"", "\"%=\"", "\"<<=\"", "\">>=\"",
+  "\"<string>\"", "\"<char>\"", "$accept", "input", null
     };
   }
 
@@ -901,7 +905,7 @@ private static final byte yycheck_[] = yycheck_init();
   {
     return new byte[]
     {
-       0,    86,    86,    87
+       0,    88,    88,    89
     };
   }
 
@@ -965,7 +969,7 @@ private static final byte yycheck_[] = yycheck_init();
       45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
       55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
       65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
-      75,    76
+      75,    76,    77
     };
   }
 
@@ -983,16 +987,16 @@ private static final byte yycheck_[] = yycheck_init();
   private static final int yyfinal_ = 4;
   private static final int yyterror_ = 1;
   private static final int yyerrcode_ = 256;
-  private static final int yyntokens_ = 77;
+  private static final int yyntokens_ = 78;
 
-  private static final int yyuser_token_number_max_ = 331;
+  private static final int yyuser_token_number_max_ = 332;
   private static final int yyundef_token_ = 2;
 
 /* User implementation code.  */
 
 }
 
-/* "klx.bison":90  */ /* lalr1.java:1060  */
+/* "klx.bison":92  */ /* lalr1.java:1060  */
 
 
 //epilogue

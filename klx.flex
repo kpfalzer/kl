@@ -151,6 +151,7 @@ SingleCharacter = [^\r\n\'\\]
   ";"                            { return getToken(SEMICOLON); }
   ","                            { return getToken(COMMA); }
   "."                            { return getToken(DOT); }
+  ".."                           { return getToken(DOTDOT); }
   
   "="                            { return getToken(EQ); }
   ">"                            { return getToken(GT); }
