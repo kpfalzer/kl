@@ -82,6 +82,9 @@ public class Token {
         STRING_LITERAL,
         CHARACTER_LITERAL,
         REGEX_LITERAL,
+        BASED_LITERAL,
+        INT_LITERAL,
+        FLOAT_LITERAL,
     }
 
     public Token(EType type, String fileName, long lineNumber, long col, String text) {

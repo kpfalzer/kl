@@ -42,7 +42,6 @@ import klx.Token.EType;
     return getToken(code, yytext());
   }
 
-  private Token __lastToken = null;
   private String __fileName = null;
 
 %}
@@ -74,10 +73,10 @@ FLit3    = [0-9]+
 Exponent = [eE] [+-]? [0-9]+
 
 OctDigit      = [0-7]
-BinaryLiteral = {BasedWidth}? \' [bB] [01][01_]*
-OctalLiteral  = {BasedWidth}? \' [oO] {OctDigit} (_|{OctDigit})*
-HexLiteral    = {BasedWidth}? \' [hH] {HexDigit} (_|{HexDigit})*
-DecLiteral    = {BasedWidth}? \' [dD] [0-9][0-9_]*
+BinaryBasedLiteral = {BasedWidth}? \' [bB] [01][01_]*
+OctalBasedLiteral  = {BasedWidth}? \' [oO] {OctDigit} (_|{OctDigit})*
+HexBasedLiteral    = {BasedWidth}? \' [hH] {HexDigit} (_|{HexDigit})*
+DecBasedLiteral    = {BasedWidth}? \' [dD] [0-9][0-9_]*
 HexDigit      = [0-9a-fA-F]
 BasedWidth    = [1-9][0-9]*
 
@@ -126,6 +125,15 @@ RegexCharacter  = [^\r\n\}\\]
   {WhiteSpace} {/*nothing*/}
 
   {Identifier} {return getToken(EType.IDENT);}
+
+  {DecIntegerLiteral} {return getToken(EType.INT_LITERAL);}
+  {FloatLiteral} {return getToken(EType.FLOAT_LITERAL);}
+
+  {BinaryBasedLiteral}
+  |  {OctalBasedLiteral}
+  |  {HexBasedLiteral}
+  |  {DecBasedLiteral}      {return getToken(EType.BASED_LITERAL);}
+
 
   "("                            { return getToken(EType.LPAREN); }
   ")"                            { return getToken(EType.RPAREN); }

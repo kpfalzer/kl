@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd20a52c-f6cc-4155-9a67-54827ee5dcc0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/klx/parser/ScannerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/klx.flex" beforeDir="false" afterPath="$PROJECT_DIR$/klx.flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/klx/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/Token.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/klx/parser/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/Scanner.java" afterDir="false" />
@@ -14,42 +15,48 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/klx.flex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="107" column="33" lean-forward="true" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="33" />
+            <state relative-caret-position="274">
+              <caret line="87" column="33" lean-forward="true" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/klx/parser/Scanner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1794">
+              <caret line="1330" column="51" selection-start-line="1330" selection-start-column="51" selection-end-line="1330" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#21372#21373#0" expanded="true" />
+                <element signature="e#21416#21417#0" expanded="true" />
+                <element signature="e#21464#21465#0" expanded="true" />
+                <element signature="e#21518#21519#0" expanded="true" />
+                <element signature="e#21569#21570#0" expanded="true" />
+                <element signature="e#21640#21641#0" expanded="true" />
+                <element signature="e#21679#21680#0" expanded="true" />
+                <element signature="e#21720#21721#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/klx/parser/Scanner.java">
+        <entry file="file://$PROJECT_DIR$/test/klx/parser/ScannerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="675" column="15" selection-start-line="675" selection-start-column="15" selection-end-line="675" selection-end-column="15" />
+            <state relative-caret-position="323">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#16803#16804#0" expanded="true" />
-                <element signature="e#16857#16858#0" expanded="true" />
-                <element signature="e#16908#16909#0" expanded="true" />
-                <element signature="e#16979#16980#0" expanded="true" />
-                <element signature="e#17018#17019#0" expanded="true" />
-                <element signature="e#17059#17060#0" expanded="true" />
-                <element signature="e#17304#17305#0" expanded="true" />
-                <element signature="e#17332#17333#0" expanded="true" />
-                <element signature="e#21044#21045#0" expanded="true" />
-                <element signature="e#21075#21076#0" expanded="true" />
-                <element signature="e#21213#21214#0" expanded="true" />
-                <element signature="e#21248#21249#0" expanded="true" />
-                <element signature="e#21360#21361#0" expanded="true" />
-                <element signature="e#21437#21438#0" expanded="true" />
-                <element signature="e#21795#21796#0" expanded="true" />
-                <element signature="e#21837#21838#0" expanded="true" />
-                <element signature="e#21935#21936#0" expanded="true" />
-                <element signature="e#21975#21976#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/klx/Token.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+            <state relative-caret-position="373">
+              <caret line="85" column="19" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -111,6 +118,7 @@
         <option value="$PROJECT_DIR$/src/klx/parser/Scanner.java" />
         <option value="$PROJECT_DIR$/src/klx/Token.java" />
         <option value="$PROJECT_DIR$/klx.flex" />
+        <option value="$PROJECT_DIR$/test/klx/parser/ScannerTest.java" />
       </list>
     </option>
   </component>
@@ -127,16 +135,43 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="klx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="klx" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="klx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="klx" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="klx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="klx" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="parser" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="klx.parser" />
       <recent name="klx" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -155,7 +190,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.LexerTest.nextToken">
+  <component name="RunManager" selected="JUnit.ScannerTest">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -200,6 +235,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ScannerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="klx" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="klx.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="klx.parser" />
+      <option name="MAIN_CLASS_NAME" value="klx.parser.ScannerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -228,9 +279,11 @@
     <list>
       <item itemvalue="Application.test.klx.Lexer" />
       <item itemvalue="JUnit.LexerTest.nextToken" />
+      <item itemvalue="JUnit.ScannerTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ScannerTest" />
         <item itemvalue="JUnit.LexerTest.nextToken" />
       </list>
     </recent_temporary>
@@ -252,21 +305,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LexerTest_nextToken - 2019.04.19 at 08h 28m 23s.xml">
-      <configuration name="LexerTest.nextToken" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LexerTest_nextToken - 2019.04.19 at 08h 29m 38s.xml">
-      <configuration name="LexerTest.nextToken" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="LexerTest_nextToken - 2019.04.19 at 08h 50m 58s.xml">
       <configuration name="LexerTest.nextToken" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LexerTest_nextToken - 2019.04.26 at 12h 26m 42s.xml">
+      <configuration name="LexerTest.nextToken" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScannerTest - 2019.04.26 at 12h 27m 36s.xml">
+      <configuration name="ScannerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScannerTest - 2019.04.26 at 12h 32m 51s.xml">
+      <configuration name="ScannerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScannerTest - 2019.04.26 at 12h 33m 33s.xml">
+      <configuration name="ScannerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScannerTest - 2019.04.26 at 12h 36m 58s.xml">
+      <configuration name="ScannerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScannerTest - 2019.04.26 at 12h 40m 35s.xml">
+      <configuration name="ScannerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScannerTest - 2019.04.26 at 12h 50m 29s.xml">
+      <configuration name="ScannerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScannerTest - 2019.04.26 at 13h 00m 29s.xml">
+      <configuration name="ScannerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ScannerTest - 2019.04.26 at 13h 01m 11s.xml">
+      <configuration name="ScannerTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="64" width="1553" height="914" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25678357" />
-      <window_info active="true" id="Structure" order="1" visible="true" weight="0.2627399" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25612178" />
+      <window_info id="Structure" order="1" weight="0.27597618" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -275,7 +349,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897863" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3279099" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.33919597" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.33819953" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -284,7 +358,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="ANTLR Preview" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32914573" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32846716" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -308,8 +382,23 @@
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/klx/parser/ScannerTest.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>__dut</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -380,42 +469,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/klx/Token.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/klx.flex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="107" column="33" lean-forward="true" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="33" />
+        <state relative-caret-position="373">
+          <caret line="85" column="19" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/klx/parser/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="675" column="15" selection-start-line="675" selection-start-column="15" selection-end-line="675" selection-end-column="15" />
+        <state relative-caret-position="-1794">
+          <caret line="1330" column="51" selection-start-line="1330" selection-start-column="51" selection-end-line="1330" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16803#16804#0" expanded="true" />
-            <element signature="e#16857#16858#0" expanded="true" />
-            <element signature="e#16908#16909#0" expanded="true" />
-            <element signature="e#16979#16980#0" expanded="true" />
-            <element signature="e#17018#17019#0" expanded="true" />
-            <element signature="e#17059#17060#0" expanded="true" />
-            <element signature="e#17304#17305#0" expanded="true" />
-            <element signature="e#17332#17333#0" expanded="true" />
-            <element signature="e#21044#21045#0" expanded="true" />
-            <element signature="e#21075#21076#0" expanded="true" />
-            <element signature="e#21213#21214#0" expanded="true" />
-            <element signature="e#21248#21249#0" expanded="true" />
-            <element signature="e#21360#21361#0" expanded="true" />
-            <element signature="e#21437#21438#0" expanded="true" />
-            <element signature="e#21795#21796#0" expanded="true" />
-            <element signature="e#21837#21838#0" expanded="true" />
-            <element signature="e#21935#21936#0" expanded="true" />
-            <element signature="e#21975#21976#0" expanded="true" />
+            <element signature="e#21372#21373#0" expanded="true" />
+            <element signature="e#21416#21417#0" expanded="true" />
+            <element signature="e#21464#21465#0" expanded="true" />
+            <element signature="e#21518#21519#0" expanded="true" />
+            <element signature="e#21569#21570#0" expanded="true" />
+            <element signature="e#21640#21641#0" expanded="true" />
+            <element signature="e#21679#21680#0" expanded="true" />
+            <element signature="e#21720#21721#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/klx.flex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="87" column="33" lean-forward="true" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/klx/parser/ScannerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
