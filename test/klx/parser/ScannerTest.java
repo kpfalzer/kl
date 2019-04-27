@@ -1,12 +1,9 @@
 package klx.parser;
 
-import klx.Token;
-import klx.Token.EType;
+import klx.parser.Token.EType;
 import org.junit.Test;
 
 import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 public class ScannerTest {
 

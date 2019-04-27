@@ -3,8 +3,8 @@ import java.io.FileReader;
 import java.io.StringReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import klx.Token;
-import klx.Token.EType;
+import klx.parser.Token;
+import klx.parser.Token.EType;
 
 %%
 
@@ -81,11 +81,9 @@ HexDigit      = [0-9a-fA-F]
 BasedWidth    = [1-9][0-9]*
 
 /* string and character literals */
-StringCharacter = [^\r\n\"\\]
-SingleCharacter = [^\r\n\'\\]
+StringCharacter = [^\r\n\"\\] | \\.
+SingleCharacter = [^\r\n\'\\] | \\.
 RegexCharacter  = [^\r\n\}\\] | "\\}"
-
-%state STRING, CHARLITERAL
 
 %%
 
@@ -185,69 +183,8 @@ RegexCharacter  = [^\r\n\}\\] | "\\}"
   ">>>="                         { return getToken(EType.URSHIFTEQ); }
 
   "%r{" {RegexCharacter}* "}"    { return getToken(EType.REGEX_LITERAL);}
-  \"                             { yybegin(STRING); __string.setLength(0); }
-  \'                             { yybegin(CHARLITERAL); }
-}
-
-<STRING> {
-  \"	{ 	
-  			yybegin(YYINITIAL); 
-  			return getToken(EType.STRING_LITERAL, __string.toString()); 
-		}
-  
-  {StringCharacter}+             { __string.append( yytext() ); }
-  
-  /* escape sequences */
-  "\\b"                          { __string.append( '\b' ); }
-  "\\t"                          { __string.append( '\t' ); }
-  "\\n"                          { __string.append( '\n' ); }
-  "\\f"                          { __string.append( '\f' ); }
-  "\\r"                          { __string.append( '\r' ); }
-  "\\\""                         { __string.append( '\"' ); }
-  "\\'"                          { __string.append( '\'' ); }
-  "\\\\"                         { __string.append( '\\' ); }
-  \\[0-3]?{OctDigit}?{OctDigit}  { 
-  		char val = (char) Integer.parseInt(yytext().substring(1),8);
-        __string.append( val ); 
-	}
-  
-  /* error cases */
-  \\.	{ 
-  	throw new RuntimeException("Illegal escape sequence \""+yytext()+"\""); 
-	}
-  {LineTerminator} { 
-  		throw new RuntimeException("Unterminated string at end of line"); 
-	}
-}
-
-<CHARLITERAL> {
-  {SingleCharacter}\'  { 
-  		yybegin(YYINITIAL); 
-		return getToken(EType.CHARACTER_LITERAL, yytext().charAt(0)); 
-	}
-  
-  /* escape sequences */
-  "\\b"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\b');}
-  "\\t"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\t');}
-  "\\n"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\n');}
-  "\\f"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\f');}
-  "\\r"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\r');}
-  "\\\""\'     { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\"');}
-  "\\'"\'      { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\'');}
-  "\\\\"\'     { yybegin(YYINITIAL); return getToken(EType.CHARACTER_LITERAL, '\\'); }
-  \\[0-3]?{OctDigit}?{OctDigit}\' { 
-  		yybegin(YYINITIAL); 
-	    int val = Integer.parseInt(yytext().substring(1,yylength()-1),8);
-	    return getToken(EType.CHARACTER_LITERAL, (char)val); 
-	}
-  
-  /* error cases */
-  \\. { 
-  		throw new RuntimeException("Illegal escape sequence \""+yytext()+"\""); 
-	}
-  {LineTerminator}  { 
-  	throw new RuntimeException("Unterminated character literal at end of line");
-  }
+  \" {StringCharacter}* \"       { return getToken(EType.STRING_LITERAL);}
+  \' {SingleCharacter}? \'       { return getToken(EType.CHARACTER_LITERAL);}
 }
 
 /* error fallback */

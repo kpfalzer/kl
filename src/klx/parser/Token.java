@@ -1,4 +1,4 @@
-package klx;
+package klx.parser;
 
 public class Token {
     public enum EType {

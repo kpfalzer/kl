@@ -4,8 +4,31 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.Path;
+import java.util.LinkedList;
+import java.util.List;
+
+import static java.util.Objects.isNull;
 
 public class Util {
+    public static void invariant(boolean cond, String msg) {
+        if (!cond) {
+            throw new RuntimeException("Invariant failed: " + msg);
+        }
+    }
+
+    public static <T> List<T> addToList(T ele, List<T> list) {
+        if (isNull(list)) {
+            list = new LinkedList<>();
+        }
+        list.add(ele);
+        return list;
+    }
+
+    public static <T> Object[] toArray(List<T> list) {
+        if (isNull(list)) return new Object[0];
+        return list.toArray();
+    }
+
     public static String readFile(String fileName) throws IOException {
         return readFile(Paths.get(fileName));
     }
