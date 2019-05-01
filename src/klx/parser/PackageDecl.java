@@ -1,18 +1,16 @@
 package klx.parser;
 
-import static klx.parser.acceptor.Repetition.zeroOrMoreSemiColon;
-
 import klx.parser.Token.EType;
 import klx.parser.acceptor.Repetition;
 import klx.parser.acceptor.Sequence;
 
-import static klx.parser.ParseError.parseError;
-import static klx.Util.flatten;
-
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.Objects.isNull;
+import static klx.Util.flatten;
+import static klx.parser.acceptor.Repetition.zeroOrMoreSemiColon;
 
 /**
  * "package" IDENT ('.' IDENT)*
@@ -33,8 +31,8 @@ public class PackageDecl {
     private void process(Parser parser) {
         long lineNum = parser.accept().lineNumber;    //skip "package"
         Object[] items = __PRODUCTION.accept(parser, (Token tok) -> tok.lineNumber == lineNum);
-        if (1 > items.length) {
-            parseError(__EXPECT, parser.peek());
+        if (isNull(items) || 1 > items.length) {
+            ParseError.expected("IDENT", parser.peek());
         }
         __name = flatten(items)
                 .map(o -> (Token) o)
@@ -45,11 +43,9 @@ public class PackageDecl {
 
     private List<Token> __name = Collections.<Token>emptyList();
 
-    private static final String __EXPECT = "package IDENT (. IDENT)*";
-
     private static final Sequence __PRODUCTION = new Sequence(
             EType.IDENT,
-            new Repetition(
+            Repetition.zeroOrMore(
                     new Sequence(EType.DOT, EType.IDENT)
             )
     );

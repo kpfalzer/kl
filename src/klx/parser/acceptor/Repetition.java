@@ -4,31 +4,29 @@ import klx.parser.Parser;
 import klx.parser.Token;
 import klx.parser.Token.EType;
 
+import java.util.LinkedList;
 import java.util.List;
 
+import static java.util.Objects.isNull;
 import static klx.Util.addToList;
 import static klx.Util.toArray;
 
 public class Repetition implements IAcceptor {
-    public Repetition(IAcceptor acceptor) {
+    private Repetition(IAcceptor acceptor, boolean zeroOrMore) {
         __acc = acceptor;
+        __zeroOrMore = zeroOrMore;
     }
 
-    private final IAcceptor __acc;
+    public static Repetition zeroOrMore(IAcceptor acceptor) {
+        return new Repetition(acceptor, true);
+    }
 
-    @Override
-    public Object[] accept(Parser parser, Predicate predicate) {
-        List<Object> accepted = null;
-        while (true) {
-            Object[] acc = __acc.accept(parser, predicate);
-            if (0 == acc.length) break;
-            accepted = addToList(acc, accepted);
-        }
-        return toArray(accepted);
+    public static Repetition oneOrMore(IAcceptor acceptor) {
+        return new Repetition(acceptor, false);
     }
 
     public static Object[] zeroOrMoreSemiColon(Parser parser) {
-        List<Object> semis = null;
+        List<Object> semis = new LinkedList<>();
         Token tok;
         while (true) {
             tok = parser.peek();
@@ -37,4 +35,18 @@ public class Repetition implements IAcceptor {
         }
         return toArray(semis);
     }
+    private final IAcceptor __acc;
+    private final boolean __zeroOrMore;
+
+    @Override
+    public Object[] accept(Parser parser, Predicate predicate) {
+        List<Object> accepted = __zeroOrMore ? new LinkedList<>() : null;
+        while (true) {
+            Object[] acc = __acc.accept(parser, predicate);
+            if (isNull(acc)) break;
+            accepted = addToList(acc, accepted);
+        }
+        return toArray(accepted);
+    }
+
 }

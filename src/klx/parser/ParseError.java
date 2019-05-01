@@ -1,15 +1,15 @@
 package klx.parser;
 
 public class ParseError extends RuntimeException {
-    public ParseError(String expected, Token found) {
-        super(message(expected, found));
+    public ParseError(Token loc, String message) {
+        super(__message(loc, message));
     }
 
-    public static void parseError(String expected, Token found) throws ParseError {
-        throw new ParseError(expected, found);
+    public static void expected(String expected, Token found) throws ParseError {
+        throw new ParseError(found, "expected '" + expected + "', found '" + found.text + "'");
     }
 
-    private static String message(String expected, Token found) {
-        return found.getLocation() + ": expected '" + expected +"', found '"+found.text+"'";
+    private static String __message(Token loc, String message) {
+        return loc.getLocation() + ": " + message;
     }
 }

@@ -32,8 +32,7 @@ public class Util {
     }
 
     public static <T> Object[] toArray(List<T> list) {
-        if (isNull(list)) return new Object[0];
-        return list.toArray();
+        return isNull(list) ? null : list.toArray();
     }
 
     public static String readFile(String fileName) throws IOException {
