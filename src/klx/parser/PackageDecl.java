@@ -1,13 +1,18 @@
 package klx.parser;
 
 import static klx.parser.acceptor.Repetition.zeroOrMoreSemiColon;
+
 import klx.parser.Token.EType;
 import klx.parser.acceptor.Repetition;
 import klx.parser.acceptor.Sequence;
-import static klx.parser.ParseError.parseError;
 
+import static klx.parser.ParseError.parseError;
+import static klx.Util.flatten;
+
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * "package" IDENT ('.' IDENT)*
@@ -31,17 +36,14 @@ public class PackageDecl {
         if (1 > items.length) {
             parseError(__EXPECT, parser.peek());
         }
-        Token tok;
-        for (Object item : items) {
-            tok = (Token)item;
-            if (tok.type == EType.IDENT) {
-                __name.add(tok);
-            }
-        }
+        __name = flatten(items)
+                .map(o -> (Token) o)
+                .filter((Token tok) -> tok.type == EType.IDENT)
+                .collect(Collectors.toList());
         zeroOrMoreSemiColon(parser);
     }
 
-    private List<Token> __name = new LinkedList<>();
+    private List<Token> __name = Collections.<Token>emptyList();
 
     private static final String __EXPECT = "package IDENT (. IDENT)*";
 

@@ -1,5 +1,7 @@
 package klx.parser;
 
+import static java.util.Objects.nonNull;
+
 public class Token {
     public enum EType {
         EOF,
@@ -92,7 +94,7 @@ public class Token {
         this.col = col;
         this.lineNumber = lineNumber;
         this.text = text;
-        this.fileName = fileName;
+        this.fileName = nonNull(fileName) ? fileName : "_";
     }
 
     public String getLocation() {

@@ -1,6 +1,8 @@
 package klx.parser;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,12 +11,31 @@ import static java.util.Objects.isNull;
 import static klx.Util.invariant;
 
 import klx.parser.Token.EType;
+import klx.parser.acceptor.IAcceptor;
 
 
 public class Parser {
     public Parser(Scanner scanner) {
         __scanner = scanner;
         initialize();
+    }
+
+    /**
+     * Test scanner starting at clazz.
+     *
+     * @param scanner scanner to use.
+     * @param clazz   implements parse method.
+     * @return parse tree.
+     */
+    public static Object parse(Scanner scanner, Class clazz) {
+        Parser parser = new Parser(scanner);
+        try {
+            Method method = clazz.getMethod("parse", Parser.class);
+            Object accx = method.invoke(null, parser);
+            return accx;
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public int getMark() {

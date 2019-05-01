@@ -120,7 +120,8 @@ RegexCharacter  = [^\r\n\}\\] | "\\}"
   
   {Comment} {/*todo: accumulate*/}
 
-  {WhiteSpace} {/*nothing*/}
+  {WhiteSpace} 
+  | {LineTerminator}	{/*nothing*/}
 
   {Identifier} {return getToken(EType.IDENT);}
 

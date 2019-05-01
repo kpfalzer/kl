@@ -7,6 +7,7 @@ import klx.parser.Token.EType;
 import static klx.Util.addToList;
 import static klx.Util.toArray;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,12 +30,14 @@ public class Sequence implements IAcceptor {
                 Token tok = parser.peek();
                 if (isNull(tok)) return _emptyArray;
                 EType type = (EType) acc;
-                if (type != tok.type || !predicate.apply(tok)) return _emptyArray;
+                if (type != tok.type) return _emptyArray;
+                if (!predicate.apply(tok)) break;
                 accepted = addToList(parser.accept(), accepted);
             } else if (acc instanceof IAcceptor) {
-                IAcceptor iacc = (IAcceptor)acc;
+                IAcceptor iacc = (IAcceptor) acc;
                 Object[] iaccepted = iacc.accept(parser, predicate);
                 if (0 == iaccepted.length) return _emptyArray;
+                accepted = addToList(iaccepted, accepted);
             } else {
                 //class instance with static parse()
                 Class clazz = (Class) acc;
@@ -43,7 +46,7 @@ public class Sequence implements IAcceptor {
                     Object accx = method.invoke(null, parser);
                     if (isNull(accx)) return _emptyArray;
                     accepted = addToList(accx, accepted);
-                } catch (Exception e) {
+                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                     throw new RuntimeException(e);
                 }
             }

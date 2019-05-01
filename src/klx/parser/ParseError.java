@@ -10,6 +10,6 @@ public class ParseError extends RuntimeException {
     }
 
     private static String message(String expected, Token found) {
-        return found.getLocation() + ": " + expected;
+        return found.getLocation() + ": expected '" + expected +"', found '"+found.text+"'";
     }
 }
