@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd20a52c-f6cc-4155-9a67-54827ee5dcc0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/klx/parser/CompilationUnit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/klx/parser/PackageDecl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/IAcceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/Repetition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/Sequence.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/klx/parser/ParseError.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/klx.flex" beforeDir="false" afterPath="$PROJECT_DIR$/klx.flex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/Scanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/klx/parser/ScannerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/klx/parser/ScannerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/klx/parser/PackageDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/PackageDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/klx/parser/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/klx/parser/acceptor/IAcceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/IAcceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/klx/parser/acceptor/Repetition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/Repetition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/klx/parser/acceptor/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/Sequence.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,22 +23,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/klx/parser/ScannerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/klx/parser/Token.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="66" column="12" lean-forward="true" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+            <state relative-caret-position="571">
+              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
             </state>
           </provider>
         </entry>
@@ -56,19 +38,36 @@
               <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
               <folding>
                 <element signature="e#129#130#0" expanded="true" />
-                <element signature="e#167#168#0" expanded="true" />
+                <element signature="e#175#176#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/klx/parser/PackageDecl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="31" column="48" lean-forward="true" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#691#692#0" expanded="true" />
+                <element signature="e#716#717#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/klx/parser/PackageDecl.java">
+        <entry file="file://$PROJECT_DIR$/src/klx/parser/ParseError.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+            <state relative-caret-position="133">
+              <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#134#135#0" expanded="true" />
+                <element signature="e#154#155#0" expanded="true" />
+                <element signature="e#238#239#0" expanded="true" />
+                <element signature="e#297#298#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,8 +76,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/IAcceptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+            <state relative-caret-position="494">
+              <caret line="26" column="56" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#326#327#0" expanded="true" />
+                <element signature="e#356#357#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,12 +90,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/Sequence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
+            <state relative-caret-position="581">
+              <caret line="41" column="90" selection-start-line="41" selection-start-column="90" selection-end-line="41" selection-end-column="90" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#139#140#0" expanded="true" />
-                <element signature="e#169#170#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,33 +102,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/Repetition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+            <state relative-caret-position="456">
+              <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
               <folding>
-                <element signature="e#203#204#0" expanded="true" />
-                <element signature="e#235#236#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/klx/parser/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="69" column="20" lean-forward="true" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
+            <state relative-caret-position="114">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#665#666#0" expanded="true" />
-                <element signature="e#694#695#0" expanded="true" />
-                <element signature="e#668#669#0" expanded="true" />
-                <element signature="e#712#713#0" expanded="true" />
-                <element signature="e#460#461#0" expanded="true" />
-                <element signature="e#493#494#0" expanded="true" />
-                <element signature="e#1190#1191#0" expanded="true" />
-                <element signature="e#1228#1229#0" expanded="true" />
-                <element signature="e#1176#1177#0" expanded="true" />
-                <element signature="e#1197#1198#0" expanded="true" />
+                <element signature="e#695#696#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,11 +127,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/klx/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="95">
+              <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -181,18 +170,20 @@
         <option value="$PROJECT_DIR$/test/klx/parser/ScannerTest.java" />
         <option value="$PROJECT_DIR$/klx.flex" />
         <option value="$PROJECT_DIR$/src/klx/parser/CompilationUnit.java" />
-        <option value="$PROJECT_DIR$/src/klx/parser/acceptor/IAcceptor.java" />
-        <option value="$PROJECT_DIR$/src/klx/parser/acceptor/Repetition.java" />
-        <option value="$PROJECT_DIR$/src/klx/parser/PackageDecl.java" />
-        <option value="$PROJECT_DIR$/src/klx/parser/acceptor/Sequence.java" />
         <option value="$PROJECT_DIR$/src/klx/Util.java" />
         <option value="$PROJECT_DIR$/src/klx/parser/Parser.java" />
+        <option value="$PROJECT_DIR$/src/klx/parser/acceptor/Sequence.java" />
+        <option value="$PROJECT_DIR$/src/klx/parser/acceptor/IAcceptor.java" />
+        <option value="$PROJECT_DIR$/src/klx/parser/acceptor/Repetition.java" />
+        <option value="$PROJECT_DIR$/src/klx/parser/Token.java" />
+        <option value="$PROJECT_DIR$/src/klx/parser/ParseError.java" />
+        <option value="$PROJECT_DIR$/src/klx/parser/PackageDecl.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="37" />
+    <option name="y" value="67" />
     <option name="width" value="1489" />
     <option name="height" value="941" />
   </component>
@@ -204,7 +195,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -233,14 +223,6 @@
             <path>
               <item name="klx" type="b2602c69:ProjectViewProjectNode" />
               <item name="klx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="klx" type="462c0819:PsiDirectoryNode" />
-              <item name="parser" type="462c0819:PsiDirectoryNode" />
-              <item name="acceptor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="klx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="klx" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -254,6 +236,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -437,11 +420,11 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="37" width="1489" height="941" extended-state="0" />
+    <frame x="65" y="67" width="1489" height="941" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.3212268" />
-      <window_info active="true" id="Structure" order="1" visible="true" weight="0.23565999" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32066345" />
+      <window_info id="Structure" order="1" weight="0.23842433" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -562,20 +545,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/klx/parser/ScannerTest.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.3.jdk/Contents/Home/lib/src.zip!/java.base/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="2166">
+          <caret line="137" column="17" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/klx/parser/Token.java">
+    <entry file="file://$PROJECT_DIR$/test/klx/parser/ScannerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="66" column="12" lean-forward="true" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+        <state relative-caret-position="38">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -585,34 +568,38 @@
           <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
           <folding>
             <element signature="e#129#130#0" expanded="true" />
-            <element signature="e#167#168#0" expanded="true" />
+            <element signature="e#175#176#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/IAcceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        <state relative-caret-position="494">
+          <caret line="26" column="56" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/klx/parser/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#665#666#0" expanded="true" />
+            <element signature="e#695#696#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/Sequence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#139#140#0" expanded="true" />
-            <element signature="e#169#170#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/klx/parser/PackageDecl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        <state relative-caret-position="581">
+          <caret line="41" column="90" selection-start-line="41" selection-start-column="90" selection-end-line="41" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -621,48 +608,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/klx/Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="95">
+          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/Repetition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+        <state relative-caret-position="456">
+          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
           <folding>
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#235#236#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.3.jdk/Contents/Home/lib/src.zip!/java.base/java/util/List.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.3.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/RuntimeException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2166">
-          <caret line="137" column="17" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
+        <state relative-caret-position="273">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/klx/parser/Parser.java">
+    <entry file="file://$PROJECT_DIR$/src/klx/parser/Token.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="69" column="20" lean-forward="true" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
+        <state relative-caret-position="571">
+          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/klx/parser/ParseError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <folding>
+            <element signature="e#134#135#0" expanded="true" />
+            <element signature="e#154#155#0" expanded="true" />
+            <element signature="e#238#239#0" expanded="true" />
+            <element signature="e#297#298#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/klx/parser/PackageDecl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="31" column="48" lean-forward="true" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#665#666#0" expanded="true" />
-            <element signature="e#694#695#0" expanded="true" />
-            <element signature="e#668#669#0" expanded="true" />
-            <element signature="e#712#713#0" expanded="true" />
-            <element signature="e#460#461#0" expanded="true" />
-            <element signature="e#493#494#0" expanded="true" />
-            <element signature="e#1190#1191#0" expanded="true" />
-            <element signature="e#1228#1229#0" expanded="true" />
-            <element signature="e#1176#1177#0" expanded="true" />
-            <element signature="e#1197#1198#0" expanded="true" />
+            <element signature="e#691#692#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
           </folding>
         </state>
       </provider>

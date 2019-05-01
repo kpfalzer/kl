@@ -95,6 +95,12 @@ public class Token {
         this.fileName = fileName;
     }
 
+    public String getLocation() {
+        StringBuffer buf = new StringBuffer(fileName);
+        buf.append(':').append(lineNumber).append(':').append(col);
+        return buf.toString();
+    }
+
     public final EType type;
     public final String fileName;
     public final long lineNumber, col;

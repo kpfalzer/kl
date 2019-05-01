@@ -10,6 +10,7 @@ import static klx.Util.toArray;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Function;
 
 import static java.util.Objects.isNull;
 
@@ -21,24 +22,24 @@ public class Sequence implements IAcceptor {
     private final Object[] __items;
 
     @Override
-    public Object[] accept(Parser parser) {
+    public Object[] accept(Parser parser, Predicate predicate) {
         List<Object> accepted = null;
         for (Object acc : __items) {
             if (acc instanceof EType) {
                 Token tok = parser.peek();
                 if (isNull(tok)) return _emptyArray;
                 EType type = (EType) acc;
-                if (type != tok.type) return _emptyArray;
+                if (type != tok.type || !predicate.apply(tok)) return _emptyArray;
                 accepted = addToList(parser.accept(), accepted);
             } else if (acc instanceof IAcceptor) {
                 IAcceptor iacc = (IAcceptor)acc;
-                Object[] iaccepted = iacc.accept(parser);
+                Object[] iaccepted = iacc.accept(parser, predicate);
                 if (0 == iaccepted.length) return _emptyArray;
             } else {
                 //class instance with static parse()
                 Class clazz = (Class) acc;
                 try {
-                    Method method = clazz.getMethod("parse", Parser.class);
+                    Method method = clazz.getMethod("parse", Parser.class, Predicate.class);
                     Object accx = method.invoke(null, parser);
                     if (isNull(accx)) return _emptyArray;
                     accepted = addToList(accx, accepted);
