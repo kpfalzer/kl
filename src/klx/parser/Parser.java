@@ -1,17 +1,15 @@
 package klx.parser;
 
+import klx.parser.Token.EType;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import static java.util.Objects.isNull;
 import static klx.Util.invariant;
-
-import klx.parser.Token.EType;
-import klx.parser.acceptor.IAcceptor;
 
 
 public class Parser {
@@ -33,7 +31,13 @@ public class Parser {
             Method method = clazz.getMethod("parse", Parser.class);
             Object accx = method.invoke(null, parser);
             return accx;
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+        } catch (InvocationTargetException e) {
+            final Throwable cause = e.getCause();
+            if (isNull(cause) || !(cause instanceof ParseError)) {
+                throw new RuntimeException(e);
+            }
+            throw ((ParseError)cause);
+        } catch (NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

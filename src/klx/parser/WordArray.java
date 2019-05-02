@@ -5,13 +5,10 @@ import klx.parser.acceptor.Repetition;
 import klx.parser.acceptor.Sequence;
 import klx.parser.acceptor.Single;
 
-import javax.swing.plaf.SeparatorUI;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 import static klx.Util.flatten;
 import static klx.parser.acceptor.Repetition.zeroOrMoreSemiColon;
 
