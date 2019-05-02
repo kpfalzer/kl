@@ -100,6 +100,7 @@ RegexCharacter  = [^\r\n\}\\] | "\\}"
   "false" 		{return getToken(EType.K_FALSE);}
   "float"		{return getToken(EType.K_FLOAT);}
   "for"			{return getToken(EType.K_FOR);}
+  "from"        {return getToken(EType.K_FROM);}
   "implements"	{return getToken(EType.K_IMPLEMENTS);}
   "if"			{return getToken(EType.K_IF);}
   "import"      {return getToken(EType.K_IMPORT);}
@@ -183,6 +184,8 @@ RegexCharacter  = [^\r\n\}\\] | "\\}"
   ">>="                          { return getToken(EType.RSHIFTEQ); }
   ">>>="                         { return getToken(EType.URSHIFTEQ); }
 
+  "%w{"                          { return getToken(EType.PCNTWLBRACE);}
+  "%s{"                          { return getToken(EType.PCNTSLBRACE);}
   "%r{" {RegexCharacter}* "}"    { return getToken(EType.REGEX_LITERAL);}
   \" {StringCharacter}* \"       { return getToken(EType.STRING_LITERAL);}
   \' {SingleCharacter}? \'       { return getToken(EType.CHARACTER_LITERAL);}

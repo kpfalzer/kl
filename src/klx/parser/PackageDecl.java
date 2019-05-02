@@ -24,6 +24,13 @@ public class PackageDecl {
         return new PackageDecl(parser);
     }
 
+    public String[] getName() {
+        return __name
+                .stream()
+                .map(tok -> tok.text)
+                .toArray(n -> new String[__name.size()]);
+    }
+
     private PackageDecl(Parser parser) {
         process(parser);
     }

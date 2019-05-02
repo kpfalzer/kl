@@ -16,6 +16,7 @@ public class Token {
         K_FALSE,
         K_FLOAT,
         K_FOR,
+        K_FROM,
         K_IMPLEMENTS,
         K_IF,
         K_IMPORT,
@@ -87,6 +88,8 @@ public class Token {
         BASED_LITERAL,
         INT_LITERAL,
         FLOAT_LITERAL,
+        PCNTWLBRACE,
+        PCNTSLBRACE,
     }
 
     public Token(EType type, String fileName, long lineNumber, long col, String text) {
