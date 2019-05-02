@@ -1,9 +1,11 @@
 package klx;
 
+import klx.parser.acceptor.IAcceptor;
+
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,9 +14,13 @@ import java.util.stream.Stream;
 import static java.util.Objects.isNull;
 
 public class Util {
+    public static IAcceptor.Predicate onSameLine(long line) {
+        return (tok) -> tok.lineNumber == line;
+    }
+
     public static Stream<Object> flatten(Object[] array) {
         return Arrays.stream(array)
-                .flatMap(o -> o instanceof Object[]? flatten((Object[])o): Stream.of(o));
+                .flatMap(o -> o instanceof Object[] ? flatten((Object[]) o) : Stream.of(o));
     }
 
     public static void invariant(boolean cond, String msg) {

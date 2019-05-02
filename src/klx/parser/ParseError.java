@@ -6,7 +6,7 @@ public class ParseError extends RuntimeException {
     }
 
     public static void expected(String expected, Token found) throws ParseError {
-        throw new ParseError(found, "expected '" + expected + "', found '" + found.text + "'");
+        throw new ParseError(found, "expected " + expected + ", found '" + found.text + "'");
     }
 
     public static void expected(String[] expected, Token found) throws ParseError {
