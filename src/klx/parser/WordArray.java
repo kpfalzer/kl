@@ -5,6 +5,7 @@ import klx.parser.acceptor.Repetition;
 import klx.parser.acceptor.Sequence;
 import klx.parser.acceptor.Single;
 
+import javax.swing.plaf.SeparatorUI;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,16 +16,17 @@ import static klx.Util.flatten;
 import static klx.parser.acceptor.Repetition.zeroOrMoreSemiColon;
 
 /**
+ * Word array (borrowed from Ruby)
  * %w{IDENT*}
  * tokens can be split across multiple lines, since we have closing }
  */
-public class WordList {
+public class WordArray {
 
-    public static WordList parse(Parser parser) {
+    public static WordArray parse(Parser parser) {
         if (!parser.laMatches(EType.PCNTWLBRACE)) {
             return null;
         }
-        return new WordList(parser);
+        return new WordArray(parser);
     }
 
     public String[] getWords() {
@@ -34,31 +36,32 @@ public class WordList {
                 .toArray(n -> new String[__words.size()]);
     }
 
-    private WordList(Parser parser) {
+    private WordArray(Parser parser) {
         process(parser);
     }
 
     private void process(Parser parser) {
         Object[] items = __PRODUCTION.accept(parser);
-        Token peek = parser.peek();
-        if (peek.type != EType.RBRACE) {
-            if (isNull(items)) {
-                ParseError.expected(new String[]{"IDENT", "}"}, peek);
-            }
-            ParseError.expected("}", peek);
+        if (isNull(items)) {
+            ParseError.at(__MSG, parser.peek());
         }
-        parser.accept();
-        if (nonNull(items)) {
-            __words = flatten(items)
-                    .map(o -> (Token) o)
-                    .collect(Collectors.toList());
-        }
+        __words = flatten(items)
+                .map(o -> (Token) o)
+                .filter((Token tok) -> tok.type == EType.IDENT)
+                .collect(Collectors.toList());
         zeroOrMoreSemiColon(parser);
     }
 
-    private List<Token> __words = Collections.<Token>emptyList();
+    private List<Token> __words = null;
 
-    private static final Repetition __PRODUCTION = Repetition.zeroOrMore(
-            new Single(EType.IDENT)
+    private static final String __MSG = "wordArray: %w{ IDENT* }";
+
+    private static final Sequence __PRODUCTION = new Sequence(
+            EType.PCNTWLBRACE,
+            Repetition.zeroOrMore(
+                    new Single(EType.IDENT)
+            ),
+            EType.RBRACE
     );
+
 }
