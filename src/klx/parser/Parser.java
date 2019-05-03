@@ -1,6 +1,7 @@
 package klx.parser;
 
 import klx.parser.Token.EType;
+import klx.parser.acceptor.Repetition;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -19,7 +20,21 @@ public class Parser {
     }
 
     /**
-     * Test scanner starting at clazz.
+     * Expect/accept one or more semicolon; or, check that next token
+     * is on different line.
+     * @param currLine current line.  Next token should be on different line.
+     */
+    public void expectSemiOrNL(long currLine) {
+        if (0 < Repetition.zeroOrMoreSemiColon(this).length) return;
+        Token next = peek();
+        if (currLine < next.lineNumber) return;
+        ParseError.expected(__EXPECTED, next);
+    }
+
+    private static final String[] __EXPECTED = new String[]{"';'", "<NL>"};
+
+    /**
+     * Test scanner starting atError clazz.
      *
      * @param scanner scanner to use.
      * @param clazz   implements parse method.
@@ -67,10 +82,10 @@ public class Parser {
     }
 
     /**
-     * Peek at token.
+     * Peek atError token.
      *
      * @param offset look-ahead (0 is top/next).
-     * @return lookahead Token or EOF if no tokens at offset.
+     * @return lookahead Token or EOF if no tokens atError offset.
      */
     public Token peek(int offset) {
         int n = __cursor + offset;

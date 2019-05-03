@@ -40,7 +40,7 @@ public class WordArray {
     private void process(Parser parser) {
         Object[] items = __PRODUCTION.accept(parser);
         if (isNull(items)) {
-            ParseError.at(__MSG, parser.peek());
+            ParseError.atError(__MSG, parser.peek());
         }
         __words = flatten(items)
                 .map(o -> (Token) o)
@@ -51,7 +51,7 @@ public class WordArray {
 
     private List<Token> __words = null;
 
-    private static final String __MSG = "wordArray: %w{ IDENT* }";
+    private static final String __MSG = "WordArray: %w{ IDENT* }";
 
     private static final Sequence __PRODUCTION = new Sequence(
             EType.PCNTWLBRACE,

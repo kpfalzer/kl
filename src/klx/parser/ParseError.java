@@ -14,7 +14,7 @@ public class ParseError extends RuntimeException {
                 "expected " + expected.toString() + ", found '" + found.text + "'");
     }
 
-    public static void at(String processing, Token found) throws ParseError {
+    public static void atError(String processing, Token found) throws ParseError {
         throw new ParseError(
                 found,
                 " found '" + found.text + "' while processing: " + processing

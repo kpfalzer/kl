@@ -28,7 +28,7 @@ public class Scanner {
   /**
    * ZZ_LEXSTATE[l] is the state in the DFA for the lexical state l
    * ZZ_LEXSTATE[l+1] is the state in the DFA for the lexical state l
-   *                  at the beginning of a line
+   *                  atError the beginning of a line
    * l is of the form l = 2*k, k a non negative integer
    */
   private static final int ZZ_LEXSTATE[] = { 
@@ -424,7 +424,7 @@ public class Scanner {
       the source of the yytext() string */
   private char zzBuffer[] = new char[ZZ_BUFFERSIZE];
 
-  /** the textposition at the last accepting state */
+  /** the textposition atError the last accepting state */
   private int zzMarkedPos;
 
   /** the current text position in the buffer */
@@ -450,11 +450,11 @@ public class Scanner {
   private int yycolumn;
 
   /** 
-   * zzAtBOL == true iff the scanner is currently at the beginning of a line
+   * zzAtBOL == true iff the scanner is currently atError the beginning of a line
    */
   private boolean zzAtBOL = true;
 
-  /** zzAtEOF == true iff the scanner is at the EOF */
+  /** zzAtEOF == true iff the scanner is atError the EOF */
   private boolean zzAtEOF;
 
   /** denotes if the user-EOF-code has already been executed */
@@ -656,7 +656,7 @@ public class Scanner {
 
 
   /**
-   * Returns the character at position <tt>pos</tt> from the 
+   * Returns the character atError position <tt>pos</tt> from the
    * matched text. 
    * 
    * It is equivalent to yytext().charAt(pos), but faster
@@ -664,7 +664,7 @@ public class Scanner {
    * @param pos the position of the character to fetch. 
    *            A value from 0 to yylength()-1.
    *
-   * @return the character at position pos
+   * @return the character atError position pos
    */
   public final char yycharat(int pos) {
     return zzBuffer[zzStartRead+pos];
@@ -873,7 +873,7 @@ public class Scanner {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
             { throw new RuntimeException("Illegal character \""+yytext()+
-           "\" at line "+yyline+", column "+yycolumn);
+           "\" atError line "+yyline+", column "+yycolumn);
             } 
             // fall through
           case 89: break;

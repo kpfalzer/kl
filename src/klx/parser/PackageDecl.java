@@ -3,7 +3,6 @@ package klx.parser;
 import klx.parser.Token.EType;
 
 import static java.util.Objects.requireNonNull;
-import static klx.parser.acceptor.Repetition.zeroOrMoreSemiColon;
 
 /**
  * "package" PackageName
@@ -29,7 +28,7 @@ public class PackageDecl {
         long lineNum = parser.accept().lineNumber;    //skip "package"
         __name = PackageName.parse(parser, (Token tok) -> tok.lineNumber == lineNum);
         requireNonNull(__name);
-        zeroOrMoreSemiColon(parser);
+        parser.expectSemiOrNL(lineNum);
     }
 
     private PackageName __name = null;
