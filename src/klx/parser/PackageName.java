@@ -30,6 +30,10 @@ public class PackageName {
                 .toArray(n -> new String[__name.size()]);
     }
 
+    public Token rmLastName() {
+        return __name.remove(__name.size()-1);
+    }
+
     private PackageName(Parser parser, IAcceptor.Predicate predicate) {
         process(parser, predicate);
     }

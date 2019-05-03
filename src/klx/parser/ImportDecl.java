@@ -2,18 +2,16 @@ package klx.parser;
 
 import klx.parser.Token.EType;
 import klx.parser.acceptor.IAcceptor;
-import klx.parser.acceptor.Repetition;
 import klx.parser.acceptor.Sequence;
 
-import java.util.Collections;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
-import static klx.Util.flatten;
+import static java.util.Objects.nonNull;
 import static klx.Util.onSameLine;
 import static klx.parser.ParseError.expected;
-import static klx.parser.acceptor.Repetition.zeroOrMoreSemiColon;
 
 /**
  * Borrowed from python and java.
@@ -30,6 +28,7 @@ public class ImportDecl {
         return null;
     }
 
+
     private static final Sequence __DOT_STAR = new Sequence(EType.DOT, EType.MULT);
 
     private static ImportDecl __import(Parser parser) {
@@ -39,8 +38,16 @@ public class ImportDecl {
         if (isNull(pkgName)) {
             expected("PackageName", parser.peek());
         }
-        Object[] dotStar = __DOT_STAR.accept(parser, onSameLine);
-        //todo
+        {
+            Object[] dotStar = __DOT_STAR.accept(parser, onSameLine);
+            if (nonNull(dotStar)) {
+                return new ImportDecl(pkgName, (Token) dotStar[1]);
+            }
+        }
+        {
+            Token item = pkgName.rmLastName();
+
+        }
         return null;
     }
 
@@ -48,25 +55,16 @@ public class ImportDecl {
         return null;
     }
 
-    private void process(Parser parser) {
-        long lineNum = parser.accept().lineNumber;    //skip "package"
-        Object[] items = __PRODUCTION.accept(parser, (Token tok) -> tok.lineNumber == lineNum);
-        if (isNull(items) || 1 > items.length) {
-            expected("IDENT", parser.peek());
-        }
-        __name = flatten(items)
-                .map(o -> (Token) o)
-                .filter((Token tok) -> tok.type == EType.IDENT)
-                .collect(Collectors.toList());
-        zeroOrMoreSemiColon(parser);
+    private ImportDecl(PackageName pkgName, Token item) {
+        this(pkgName, new LinkedList<>(Arrays.asList(item)));
     }
 
-    private List<Token> __name = Collections.<Token>emptyList();
+    private ImportDecl(PackageName pkgName, List<Token> items) {
+        __packageName = pkgName;
+        __items = items;
+    }
 
-    private static final Sequence __PRODUCTION = new Sequence(
-            EType.IDENT,
-            Repetition.zeroOrMore(
-                    new Sequence(EType.DOT, EType.IDENT)
-            )
-    );
+    private final PackageName __packageName;
+    private final List<Token> __items;
+
 }
