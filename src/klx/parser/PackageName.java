@@ -30,6 +30,10 @@ public class PackageName {
                 .toArray(n -> new String[__name.size()]);
     }
 
+    public String toString() {
+        return String.join(".", getName());
+    }
+
     public Token rmLastName() {
         return __name.remove(__name.size()-1);
     }

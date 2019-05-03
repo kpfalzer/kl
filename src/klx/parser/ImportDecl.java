@@ -11,6 +11,7 @@ import java.util.List;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static klx.Util.onSameLine;
+import static klx.parser.ParseError.error;
 import static klx.parser.ParseError.expected;
 
 /**
@@ -32,7 +33,8 @@ public class ImportDecl {
     private static final Sequence __DOT_STAR = new Sequence(EType.DOT, EType.MULT);
 
     private static ImportDecl __import(Parser parser) {
-        long lineNum = parser.accept().lineNumber;
+        final Token importKwrd = parser.accept();
+        long lineNum = importKwrd.lineNumber;
         IAcceptor.Predicate onSameLine = onSameLine(lineNum);
         PackageName pkgName = PackageName.parse(parser, onSameLine);
         if (isNull(pkgName)) {
@@ -45,10 +47,12 @@ public class ImportDecl {
             }
         }
         {
+            if (2 > pkgName.getName().length) {
+                error(importKwrd, pkgName.toString()+": invalid name (missing '.IDENT')")
+            }
             Token item = pkgName.rmLastName();
-
+            return new ImportDecl(pkgName, item);
         }
-        return null;
     }
 
     private static ImportDecl __from(Parser parser) {

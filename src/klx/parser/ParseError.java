@@ -2,7 +2,7 @@ package klx.parser;
 
 public class ParseError extends RuntimeException {
     public ParseError(Token loc, String message) {
-        super(__message(loc, message));
+        super(error(loc, message));
     }
 
     public static void expected(String expected, Token found) throws ParseError {
@@ -21,7 +21,7 @@ public class ParseError extends RuntimeException {
         );
     }
 
-    private static String __message(Token loc, String message) {
+    public static String error(Token loc, String message) {
         return loc.getLocation() + ": " + message;
     }
 }
