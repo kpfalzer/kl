@@ -8,6 +8,7 @@ import klx.parser.acceptor.Sequence;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -22,6 +23,10 @@ import static klx.parser.ParseError.*;
 public class ImportDecl {
 
     public static ImportDecl parse(Parser parser) {
+        return parse(parser, null);
+    }
+
+    public static ImportDecl parse(Parser parser, IAcceptor.Predicate ignored) {
         if (parser.laMatches(EType.K_IMPORT))
             return __import(parser);
         if (parser.laMatches(EType.K_FROM))
@@ -69,6 +74,7 @@ public class ImportDecl {
             EType.STRING_LITERAL,
             WordArray.class
     );
+
     /**
      * "from" PackageName "import" ('*' | IDENT | STRING_LITERAL | WordArray)
      *
@@ -76,16 +82,36 @@ public class ImportDecl {
      * @return
      */
     private static ImportDecl __from(Parser parser) {
-        parser.accept();
-        Object[] seq = __FROM_IMPORT.accept(parser);
+        final Token fromKwrd = parser.accept();
+        long lineNum = fromKwrd.lineNumber;
+        IAcceptor.Predicate onSameLine = onSameLine(lineNum);
+        Object[] seq = __FROM_IMPORT.accept(parser, onSameLine);
         if (isNull(seq)) {
-            atError(__MSG, parser.peek());
+            atError(__MSG1, parser.peek());
         }
-        PackageName pkgName = (PackageName)seq[0];
-        return null;
+        PackageName pkgName = (PackageName) seq[0];
+        Object[] item = __IMPORT_ALTS.accept(parser, onSameLine);
+        if (isNull(item)) {
+            expected(__MSG2, parser.peek());
+        }
+        ImportDecl decl = null;
+        if (item[0] instanceof Token) {
+            decl = new ImportDecl(pkgName, (Token) item[0]);
+        } else {
+            WordArray words = (WordArray) item[0];
+            decl = new ImportDecl(pkgName, words.getWordTokens().collect(Collectors.toList()));
+        }
+        parser.expectSemiOrNL(lineNum);
+        return decl;
     }
 
-    private static final String __MSG = "ImportDecl: from PackageName import ...";
+    private static final String __MSG1 = "ImportDecl: from PackageName import ...";
+    private static final String[] __MSG2 = new String[]{
+            "'*'",
+            "IDENT",
+            "STRING_LITERAL",
+            "WordArray"
+    };
 
     private ImportDecl(PackageName pkgName, Token item) {
         this(pkgName, new LinkedList<>(Arrays.asList(item)));

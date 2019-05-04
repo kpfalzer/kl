@@ -1,5 +1,7 @@
 package klx.parser;
 
+import java.util.Arrays;
+
 public class ParseError extends RuntimeException {
     public ParseError(Token loc, String message) {
         super(error(loc, message));
@@ -11,7 +13,7 @@ public class ParseError extends RuntimeException {
 
     public static void expected(String[] expected, Token found) throws ParseError {
         throw new ParseError(found,
-                "expected " + expected.toString() + ", found '" + found.text + "'");
+                "expected " + Arrays.toString(expected) + ", found '" + found.text + "'");
     }
 
     public static void atError(String processing, Token found) throws ParseError {

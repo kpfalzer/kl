@@ -25,8 +25,10 @@ public class Parser {
      * @param currLine current line.  Next token should be on different line.
      */
     public void expectSemiOrNL(long currLine) {
-        if (0 < Repetition.zeroOrMoreSemiColon(this).length) return;
         Token next = peek();
+        if (EType.EOF == next.type) return;
+        if (0 < Repetition.zeroOrMoreSemiColon(this).length) return;
+        next = peek();
         if (currLine < next.lineNumber) return;
         ParseError.expected(__EXPECTED, next);
     }

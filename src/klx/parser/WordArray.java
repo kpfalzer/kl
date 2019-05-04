@@ -1,12 +1,14 @@
 package klx.parser;
 
 import klx.parser.Token.EType;
+import klx.parser.acceptor.IAcceptor;
 import klx.parser.acceptor.Repetition;
 import klx.parser.acceptor.Sequence;
 import klx.parser.acceptor.Single;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
 import static klx.Util.flatten;
@@ -20,6 +22,10 @@ import static klx.parser.acceptor.Repetition.zeroOrMoreSemiColon;
 public class WordArray {
 
     public static WordArray parse(Parser parser) {
+        return parse(parser, null);
+    }
+
+    public static WordArray parse(Parser parser, IAcceptor.Predicate ignored) {
         if (!parser.laMatches(EType.PCNTWLBRACE)) {
             return null;
         }
@@ -27,10 +33,13 @@ public class WordArray {
     }
 
     public String[] getWords() {
-        return __words
-                .stream()
+        return getWordTokens()
                 .map(tok -> tok.text)
                 .toArray(n -> new String[__words.size()]);
+    }
+
+    public Stream<Token> getWordTokens() {
+        return __words.stream();
     }
 
     private WordArray(Parser parser) {
