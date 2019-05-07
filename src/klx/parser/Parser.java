@@ -60,12 +60,11 @@ public class Parser {
     }
 
     public int getMark() {
-        invariant(!isEOF(), "Cannot getMark() if EOF");
-        return __cursor;
+        return (isEOF()) ? -1 : __cursor;
     }
 
     public int setMark(int mark) {
-        invariant(mark < length(), "Mark value error");
+        invariant(mark < length() && mark >= 0, "Mark value error");
         __cursor = mark;
         checkEOF();
         return __cursor;

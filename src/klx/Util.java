@@ -1,6 +1,6 @@
 package klx;
 
-import klx.parser.acceptor.IAcceptor;
+import klx.parser.acceptor.Acceptor;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 import static java.util.Objects.isNull;
 
 public class Util {
-    public static IAcceptor.Predicate onSameLine(long line) {
+    public static Acceptor.Predicate onSameLine(long line) {
         return (tok) -> tok.lineNumber == line;
     }
 

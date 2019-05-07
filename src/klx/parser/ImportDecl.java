@@ -2,7 +2,7 @@ package klx.parser;
 
 import klx.parser.Token.EType;
 import klx.parser.acceptor.Alternates;
-import klx.parser.acceptor.IAcceptor;
+import klx.parser.acceptor.Acceptor;
 import klx.parser.acceptor.Sequence;
 
 import java.util.Arrays;
@@ -26,7 +26,7 @@ public class ImportDecl {
         return parse(parser, null);
     }
 
-    public static ImportDecl parse(Parser parser, IAcceptor.Predicate ignored) {
+    public static ImportDecl parse(Parser parser, Acceptor.Predicate ignored) {
         if (parser.laMatches(EType.K_IMPORT))
             return __import(parser);
         if (parser.laMatches(EType.K_FROM))
@@ -40,7 +40,7 @@ public class ImportDecl {
     private static ImportDecl __import(Parser parser) {
         final Token importKwrd = parser.accept();
         long lineNum = importKwrd.lineNumber;
-        IAcceptor.Predicate onSameLine = onSameLine(lineNum);
+        Acceptor.Predicate onSameLine = onSameLine(lineNum);
         PackageName pkgName = PackageName.parse(parser, onSameLine);
         if (isNull(pkgName)) {
             expected("PackageName", parser.peek());
@@ -53,7 +53,7 @@ public class ImportDecl {
             }
         }
         if (isNull(decl)) {
-            if (2 > pkgName.getName().length) {
+            if (2 > pkgName.name().length) {
                 error(importKwrd, pkgName.toString() + ": invalid name (missing '.IDENT')");
             }
             Token item = pkgName.rmLastName();
@@ -84,7 +84,7 @@ public class ImportDecl {
     private static ImportDecl __from(Parser parser) {
         final Token fromKwrd = parser.accept();
         long lineNum = fromKwrd.lineNumber;
-        IAcceptor.Predicate onSameLine = onSameLine(lineNum);
+        Acceptor.Predicate onSameLine = onSameLine(lineNum);
         Object[] seq = __FROM_IMPORT.accept(parser, onSameLine);
         if (isNull(seq)) {
             atError(__MSG1, parser.peek());
@@ -120,6 +120,14 @@ public class ImportDecl {
     private ImportDecl(PackageName pkgName, List<Token> items) {
         __packageName = pkgName;
         __items = items;
+    }
+
+    public PackageName packageName() {
+        return __packageName;
+    }
+
+    public Token[] items() {
+        return __items.toArray(new Token[0]);
     }
 
     private final PackageName __packageName;

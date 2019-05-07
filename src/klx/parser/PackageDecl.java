@@ -17,7 +17,7 @@ public class PackageDecl {
     }
 
     public String[] getName() {
-        return __name.getName();
+        return __name.name();
     }
 
     private PackageDecl(Parser parser) {

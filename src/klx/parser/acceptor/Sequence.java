@@ -12,7 +12,7 @@ import static java.util.Objects.isNull;
 import static klx.Util.addToList;
 import static klx.Util.toArray;
 
-public class Sequence implements IAcceptor {
+public class Sequence extends Acceptor {
     public Sequence(Object... items) {
         __items = items;
     }
@@ -21,18 +21,19 @@ public class Sequence implements IAcceptor {
 
     @Override
     public Object[] accept(Parser parser, Predicate predicate) {
+        _init(parser);
         List<Object> accepted = null;
         for (Object acc : __items) {
             if (acc instanceof EType) {
                 Token tok = parser.peek();
                 EType type = (EType) acc;
-                if (type != tok.type) return null;
+                if (type != tok.type) return _fail();
                 if (!predicate.apply(tok)) break;
                 accepted = addToList(parser.accept(), accepted);
-            } else if (acc instanceof IAcceptor) {
-                IAcceptor iacc = (IAcceptor) acc;
+            } else if (acc instanceof Acceptor) {
+                Acceptor iacc = (Acceptor) acc;
                 Object[] iaccepted = iacc.accept(parser, predicate);
-                if (isNull(iaccepted)) return null;
+                if (isNull(iaccepted)) return _fail();
                 accepted = addToList(iaccepted, accepted);
             } else {
                 //class instance with static parse()
@@ -40,7 +41,7 @@ public class Sequence implements IAcceptor {
                 try {
                     Method method = clazz.getMethod("parse", Parser.class, Predicate.class);
                     Object accx = method.invoke(null, parser, predicate);
-                    if (isNull(accx)) return null;
+                    if (isNull(accx)) return _fail();
                     accepted = addToList(accx, accepted);
                 } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                     throw new RuntimeException(e);

@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 
 import static java.util.Objects.isNull;
 
-public class Alternates implements IAcceptor {
+public class Alternates extends Acceptor {
     public Alternates(Object... items) {
         __items = items;
     }
@@ -17,6 +17,7 @@ public class Alternates implements IAcceptor {
 
     @Override
     public Object[] accept(Parser parser, Predicate predicate) {
+        _init(parser);
         for (Object acc : __items) {
             if (acc instanceof Token.EType) {
                 Token tok = parser.peek();
@@ -24,8 +25,8 @@ public class Alternates implements IAcceptor {
                 if (type != tok.type) continue;
                 if (!predicate.apply(tok)) continue;
                 return new Object[]{parser.accept()};
-            } else if (acc instanceof IAcceptor) {
-                IAcceptor iacc = (IAcceptor) acc;
+            } else if (acc instanceof Acceptor) {
+                Acceptor iacc = (Acceptor) acc;
                 Object[] iaccepted = iacc.accept(parser, predicate);
                 if (isNull(iaccepted)) continue;
                 return iaccepted;
@@ -43,6 +44,6 @@ public class Alternates implements IAcceptor {
             }
 
         }
-        return null;
+        return _fail();
     }
 }

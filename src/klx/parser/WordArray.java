@@ -1,7 +1,7 @@
 package klx.parser;
 
 import klx.parser.Token.EType;
-import klx.parser.acceptor.IAcceptor;
+import klx.parser.acceptor.Acceptor;
 import klx.parser.acceptor.Repetition;
 import klx.parser.acceptor.Sequence;
 import klx.parser.acceptor.Single;
@@ -25,7 +25,7 @@ public class WordArray {
         return parse(parser, null);
     }
 
-    public static WordArray parse(Parser parser, IAcceptor.Predicate ignored) {
+    public static WordArray parse(Parser parser, Acceptor.Predicate ignored) {
         if (!parser.laMatches(EType.PCNTWLBRACE)) {
             return null;
         }
