@@ -18,7 +18,7 @@ public class ImportDeclTest {
         {
             String s = "import foo.bar";
             ImportDecl pdecl = parse(s);
-            invariant(1 == pdecl.packageName().name().length, "expected 1 names");
+            invariant(1 == pdecl.packageName().name().length, "expected 1 name");
             invariant(1 == pdecl.items().length, "expected 1 item");
         }
         {
@@ -28,5 +28,35 @@ public class ImportDeclTest {
             invariant(2 == pdecl.packageName().name().length, "expected 2 names");
             invariant(1 == pdecl.items().length, "expected 1 item");
         }
+        {
+            String s = "from foo import bar";
+            ImportDecl pdecl = parse(s);
+            requireNonNull(pdecl);
+            invariant(1 == pdecl.packageName().name().length, "expected 1 name");
+            invariant(1 == pdecl.items().length, "expected 1 item");
+        }
+        {
+            String s = "from foo.dog import %w{\na b c\nd e f\n\n}";
+            ImportDecl pdecl = parse(s);
+            requireNonNull(pdecl);
+            invariant(2 == pdecl.packageName().name().length, "expected 1 name");
+            invariant(6 == pdecl.items().length, "expected 1 item");
+        }
+        {
+            String s = "from foo.dog import *";
+            ImportDecl pdecl = parse(s);
+            requireNonNull(pdecl);
+            invariant(2 == pdecl.packageName().name().length, "expected 1 name");
+            invariant(1 == pdecl.items().length, "expected 1 item");
+        }
+
+        {
+            String s = "from foo.dog import \"operator +\"";
+            ImportDecl pdecl = parse(s);
+            requireNonNull(pdecl);
+            invariant(2 == pdecl.packageName().name().length, "expected 1 name");
+            invariant(1 == pdecl.items().length, "expected 1 item");
+        }
+
     }
 }

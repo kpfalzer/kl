@@ -2,18 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd20a52c-f6cc-4155-9a67-54827ee5dcc0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/ImportDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/ImportDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/PackageDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/PackageDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/PackageName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/PackageName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/WordArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/WordArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/acceptor/Alternates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/Alternates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/acceptor/IAcceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/Acceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/acceptor/Repetition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/Repetition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/acceptor/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/Sequence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/klx/parser/acceptor/Single.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klx/parser/acceptor/Single.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/klx/parser/ImportDeclTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/klx/parser/ImportDeclTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,13 +19,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/klx/parser/ImportDecl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="-1042">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#678#679#0" expanded="true" />
                 <element signature="e#720#721#0" expanded="true" />
                 <element signature="e#3975#3976#0" expanded="true" />
                 <element signature="e#4010#4011#0" expanded="true" />
@@ -48,48 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/Sequence.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/klx/parser/ImportDeclTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/Single.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/Alternates.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/Repetition.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="45" column="19" lean-forward="true" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-              <folding>
-                <element signature="e#513#514#0" expanded="true" />
-                <element signature="e#566#567#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="567">
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
             </state>
           </provider>
         </entry>
@@ -97,60 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/klx/parser/PackageName.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#1002#1003#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/klx/parser/acceptor/Acceptor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-              <folding>
-                <element signature="e#338#339#0" expanded="true" />
-                <element signature="e#389#390#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/klx/parser/ImportDeclTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/klx/parser/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
-              <folding>
-                <element signature="e#1904#1905#0" expanded="true" />
-                <element signature="e#1952#1953#0" expanded="true" />
-                <element signature="e#2271#2272#0" expanded="true" />
-                <element signature="e#2315#2316#0" expanded="true" />
-                <element signature="e#2359#2360#0" expanded="true" />
-                <element signature="e#2400#2401#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/klx/Util.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="145">
-              <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
             </state>
           </provider>
         </entry>
@@ -235,32 +135,6 @@
             <path>
               <item name="klx" type="b2602c69:ProjectViewProjectNode" />
               <item name="klx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="klx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="klx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="klx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="klx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="klx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="klx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="klx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="klx" type="462c0819:PsiDirectoryNode" />
-              <item name="parser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="klx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="klx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="klx" type="462c0819:PsiDirectoryNode" />
-              <item name="parser" type="462c0819:PsiDirectoryNode" />
-              <item name="acceptor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="klx" type="b2602c69:ProjectViewProjectNode" />
@@ -483,41 +357,41 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ImportDeclTest - 2019.05.07 at 13h 43m 52s.xml">
-      <configuration name="ImportDeclTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ImportDeclTest - 2019.05.07 at 13h 47m 24s.xml">
-      <configuration name="ImportDeclTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ImportDeclTest - 2019.05.07 at 13h 47m 45s.xml">
-      <configuration name="ImportDeclTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ImportDeclTest - 2019.05.07 at 13h 51m 58s.xml">
-      <configuration name="ImportDeclTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 07m 55s.xml">
-      <configuration name="ImportDeclTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 09m 12s.xml">
-      <configuration name="ImportDeclTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 11m 01s.xml">
-      <configuration name="ImportDeclTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 13m 01s.xml">
-      <configuration name="ImportDeclTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 13m 44s.xml">
-      <configuration name="ImportDeclTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ImportDeclTest_and_3_more - 2019.05.07 at 14h 14m 39s.xml">
+      <configuration name="ImportDeclTest and 3 more" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 38m 04s.xml">
+      <configuration name="ImportDeclTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 38m 49s.xml">
+      <configuration name="ImportDeclTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 39m 52s.xml">
+      <configuration name="ImportDeclTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 40m 39s.xml">
+      <configuration name="ImportDeclTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 42m 22s.xml">
+      <configuration name="ImportDeclTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 42m 50s.xml">
+      <configuration name="ImportDeclTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 43m 15s.xml">
+      <configuration name="ImportDeclTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ImportDeclTest - 2019.05.07 at 14h 44m 27s.xml">
+      <configuration name="ImportDeclTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ImportDeclTest_and_3_more - 2019.05.07 at 14h 45m 53s.xml">
       <configuration name="ImportDeclTest and 3 more" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="67" width="1489" height="941" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37042156" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.243953" />
       <window_info id="Structure" order="1" weight="0.23842433" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -526,7 +400,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32808718" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32566586" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32566586" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4394673" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -592,21 +466,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/klx/parser/ImportDeclTest.java</url>
-          <line>25</line>
+          <line>56</line>
           <properties />
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/klx/parser/ImportDecl.java</url>
-          <line>49</line>
-          <properties />
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/klx/parser/PackageName.java</url>
-          <line>45</line>
-          <properties />
-          <option name="timeStamp" value="29" />
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -857,17 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/klx/parser/PackageName.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#1002#1003#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/klx/parser/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -883,25 +734,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/klx/parser/ImportDeclTest.java">
+    <entry file="file://$PROJECT_DIR$/src/klx/parser/PackageName.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        <state relative-caret-position="145">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/klx/parser/ImportDecl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="-1042">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#678#679#0" expanded="true" />
             <element signature="e#720#721#0" expanded="true" />
             <element signature="e#3975#3976#0" expanded="true" />
             <element signature="e#4010#4011#0" expanded="true" />
             <element signature="e#4041#4042#0" expanded="true" />
             <element signature="e#4069#4070#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/klx/parser/ImportDeclTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>
