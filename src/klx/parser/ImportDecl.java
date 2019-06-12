@@ -18,7 +18,7 @@ import static klx.parser.ParseError.*;
 /**
  * Borrowed from python and java.
  * "import" PackageName ('.' ('*' | IDENT))
- * |   "from" PackageName "import" ('*' | IDENT | STRING_LITERAL | WordArray)
+ * |   "from" PackageName "import" ('*' | IdentList | STRING_LITERAL)
  */
 public class ImportDecl {
 
@@ -70,13 +70,12 @@ public class ImportDecl {
 
     private static final Alternates __IMPORT_ALTS = new Alternates(
             EType.MULT,
-            EType.IDENT,
             EType.STRING_LITERAL,
-            WordArray.class
+            IdentList.class
     );
 
     /**
-     * "from" PackageName "import" ('*' | IDENT | STRING_LITERAL | WordArray)
+     * "from" PackageName "import" ('*' | IdentList | STRING_LITERAL)
      *
      * @param parser
      * @return
@@ -98,8 +97,8 @@ public class ImportDecl {
         if (item[0] instanceof Token) {
             decl = new ImportDecl(pkgName, (Token) item[0]);
         } else {
-            WordArray words = (WordArray) item[0];
-            decl = new ImportDecl(pkgName, words.getWordTokens().collect(Collectors.toList()));
+            IdentList idents = (IdentList) item[0];
+            decl = new ImportDecl(pkgName, idents.getIdentTokens().collect(Collectors.toList()));
         }
         parser.expectSemiOrNL(lineNum);
         return decl;
@@ -108,9 +107,8 @@ public class ImportDecl {
     private static final String __MSG1 = "ImportDecl: from PackageName import ...";
     private static final String[] __MSG2 = new String[]{
             "'*'",
-            "IDENT",
-            "STRING_LITERAL",
-            "WordArray"
+            "IdentList",
+            "STRING_LITERAL"
     };
 
     private ImportDecl(PackageName pkgName, Token item) {

@@ -36,7 +36,7 @@ public class ImportDeclTest {
             invariant(1 == pdecl.items().length, "expected 1 item");
         }
         {
-            String s = "from foo.dog import %w{\na b c\nd e f\n\n}";
+            String s = "from foo.dog import a,b,c,d,\n\ne,f";
             ImportDecl pdecl = parse(s);
             requireNonNull(pdecl);
             invariant(2 == pdecl.packageName().name().length, "expected 1 name");

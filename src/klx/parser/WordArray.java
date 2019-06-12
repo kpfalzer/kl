@@ -5,13 +5,11 @@ import klx.parser.acceptor.Acceptor;
 import klx.parser.acceptor.Repetition;
 import klx.parser.acceptor.Sequence;
 import klx.parser.acceptor.Single;
+import klx.parser.util.TokenList;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
-import static klx.Util.flatten;
 import static klx.parser.acceptor.Repetition.zeroOrMoreSemiColon;
 
 /**
@@ -33,13 +31,11 @@ public class WordArray {
     }
 
     public String[] getWords() {
-        return getWordTokens()
-                .map(tok -> tok.text)
-                .toArray(n -> new String[__words.size()]);
+        return __words.asString();
     }
 
     public Stream<Token> getWordTokens() {
-        return __words.stream();
+        return __words.asStream();
     }
 
     private WordArray(Parser parser) {
@@ -51,14 +47,11 @@ public class WordArray {
         if (isNull(items)) {
             ParseError.atError(__MSG, parser.peek());
         }
-        __words = flatten(items)
-                .map(o -> (Token) o)
-                .filter((Token tok) -> tok.type == EType.IDENT)
-                .collect(Collectors.toList());
+        __words = new TokenList(items, (Token tok) -> tok.type == EType.IDENT);
         zeroOrMoreSemiColon(parser);
     }
 
-    private List<Token> __words = null;
+    private TokenList __words = null;
 
     private static final String __MSG = "WordArray: %w{ IDENT* }";
 
